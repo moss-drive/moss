@@ -29,11 +29,11 @@ interface IHiker {
 
 	function estimateBuy(uint256 id, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function estimateSell(uint256 id, uint256 amount) external view returns (uint256 total, uint256 value, uint256 devFee);
+	function estimateSell(uint256 id, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
 	function estimateBuy(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function estimateSell(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 devFee);
+	function estimateSell(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
 	function estimateAdjust(uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) external pure returns (uint256 _floor);
 

@@ -19,6 +19,7 @@ contract Helpers {
 	struct SellPriceInfo {
 		uint256 total;
 		uint256 value;
+		uint256 creatorFee;
 		uint256 devFee;
 	}
 
@@ -70,7 +71,7 @@ contract Helpers {
 		uint256 floor = moss.floor(id);
 		uint256 floorSupply = moss.floorSupply(id);
 		uint256 totalSupply = moss.totalSupply(id);
-		(uint256 total, uint256 value, uint256 devFee) = moss.estimateSell(k, totalSupply, floorSupply, floor, amountToSell);
-		sale = SellPriceInfo({ total: total, value: value, devFee: devFee });
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = moss.estimateSell(k, totalSupply, floorSupply, floor, amountToSell);
+		sale = SellPriceInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
 	}
 }
