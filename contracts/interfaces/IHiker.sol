@@ -7,7 +7,7 @@ interface IHiker {
 
 	event Bought(address from, uint256 id, address to, uint256 amount, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	event Sold(address from, uint256 id, address to, uint256 amount, uint256 value, uint256 devFee);
+	event Sold(address from, uint256 id, address to, uint256 amount, uint256 value, uint256 creatorFee, uint256 devFee);
 
 	function k() external view returns (uint64);
 

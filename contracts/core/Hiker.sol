@@ -106,7 +106,7 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		uint256 _t = totalSupply(id);
 		require(_t >= amount, "Hike: amount must be less than or equal to total supply");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
-		(uint256 total, , uint256 creatorFee, uint256 devFee) = estimateSell(cache.k, cache.t, cache.fs, cache.f, cache.amount);
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateSell(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(total >= minReceived, "Hiker: received value must be greater than or equal to minimum received");
 		_burn(msg.sender, cache.id, cache.amount);
 		(bool _success, ) = cache.to.call{ value: total }("");
@@ -115,7 +115,7 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		require(_success, "Hiker: failed to transfer creator fee ");
 		(_success, ) = dev.call{ value: devFee }("");
 		require(_success, "Hiker: failed to transfer dev fee");
-		emit Sold(msg.sender, cache.id, cache.to, cache.amount, total, devFee);
+		emit Sold(msg.sender, cache.id, cache.to, cache.amount, value, creatorFee, devFee);
 	}
 
 	function worth(uint256 _k, uint256 _t, uint256 _fs, uint256 _f) public pure returns (uint256) {
