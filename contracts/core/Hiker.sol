@@ -43,9 +43,9 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 id, uint256 _f, string memory _tokenURI, uint256 timeoutAt) external payable nonReentrant {
-		require(block.timestamp < timeoutAt, "Hiker: timeout");
-		_create(id, _f, 100, 200, 10);
+	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, string memory _tokenURI, uint256 timeoutAt) external payable nonReentrant {
+		require(block.timestamp < timeoutAt, "Hiker: tx timeout");
+		_create(id, _f, _fs, _s, _fsStep);
 		_setTokenURI(id, _tokenURI);
 	}
 
@@ -76,7 +76,6 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function buy(uint256 id, address to, uint256 amount, uint256 maxSent) external payable nonReentrant {
-		require(creatorOf(id) != address(0), "Hiker: token is not created");
 		require(amount > 0, "Hiker: amount must be greater than 0");
 		Cache memory cache = Cache({ k: k, t: totalSupply(id), f: floor(id), fs: floorSupply(id), step: stepment(id), amount: amount, id: id, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBuy(cache.k, cache.t, cache.fs, cache.f, cache.amount);
@@ -135,7 +134,7 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function estimateBuy(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(exists(id), "Hiker: nonexistent id");
+		require(creatorOf(id) != address(0), "Hiker: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
@@ -145,7 +144,7 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function estimateSell(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(exists(id), "Hiker: nonexistent id");
+		require(creatorOf(id) != address(0), "Hiker: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
