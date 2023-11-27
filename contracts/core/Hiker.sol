@@ -4,7 +4,7 @@ pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 
-import "../dependencies/console.sol";
+import "../libraries/console.sol";
 import "../interfaces/IHiker.sol";
 
 abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
@@ -43,10 +43,9 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, string memory _tokenURI, uint256 timeoutAt) external payable nonReentrant {
+	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
 		require(block.timestamp < timeoutAt, "Hiker: tx timeout");
 		_create(id, _f, _fs, _s, _fsStep);
-		_setTokenURI(id, _tokenURI);
 	}
 
 	function _create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
@@ -103,7 +102,7 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		require(exists(id), "Hiker: nonexsitent token");
 		require(amount > 0, "Hiker: amount must be greater than 0");
 		uint256 _t = totalSupply(id);
-		require(_t >= amount, "Hike: amount must be less than or equal to total supply");
+		require(_t >= amount, "Hike: too much amount to sell");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateSell(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(total >= minReceived, "Hiker: received value must be greater than or equal to minimum received");
@@ -208,8 +207,6 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	receive() external payable {}
 
 	function _setCreator(uint256 id, address creator) internal virtual;
-
-	function _setTokenURI(uint256 id, string memory tokenURI) internal virtual;
 
 	function _mint(address to, uint256 id, uint256 amount) internal virtual;
 

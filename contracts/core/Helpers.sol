@@ -3,7 +3,7 @@
 pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "../dependencies/console.sol";
+import "../libraries/console.sol";
 import "../interfaces/IMoss.sol";
 
 contract Helpers {

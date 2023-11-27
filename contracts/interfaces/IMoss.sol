@@ -5,8 +5,6 @@ pragma solidity 0.8.19;
 import "./IHiker.sol";
 
 interface IMoss is IHiker {
-	event TokenURIUpdated(uint256 id, string tokenURI);
-
 	event CreatorUpdated(uint256 id, address creator);
 
 	function uri(uint256 id) external view returns (string memory);
