@@ -4,10 +4,10 @@ pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../libraries/console.sol";
-import "../interfaces/IMoss.sol";
+import "../interfaces/IMossHub.sol";
 
 contract Helpers {
-	IMoss public immutable moss;
+	IMossHub public immutable mossHub;
 
 	struct BuyPriceInfo {
 		uint256 total;
@@ -38,40 +38,40 @@ contract Helpers {
 		uint256 worth;
 	}
 
-	constructor(IMoss _moss) {
-		moss = _moss;
+	constructor(IMossHub _mossHub) {
+		mossHub = _mossHub;
 	}
 
 	function stoneOf(address to, uint256 id) public view returns (StoneInfo memory stone) {
-		stone.k = moss.k();
-		stone.minFloor = moss.minFloor();
-		stone.devFeePCT = moss.devFeePCT();
-		stone.defaultCreatorFeePCT = moss.defaultCreatorFeePCT();
-		stone.creator = moss.creatorOf(id);
-		stone.floor = moss.floor(id);
-		stone.floorSupply = moss.floorSupply(id);
-		stone.stepment = moss.stepment(id);
-		stone.fsStep = moss.fsStepOf(id);
-		stone.accountBalance = moss.balanceOf(to, id);
-		stone.totalSupply = moss.totalSupply(id);
-		stone.worth = moss.worthOf(id);
+		stone.k = mossHub.k();
+		stone.minFloor = mossHub.minFloor();
+		stone.devFeePCT = mossHub.devFeePCT();
+		stone.defaultCreatorFeePCT = mossHub.defaultCreatorFeePCT();
+		stone.creator = mossHub.creatorOf(id);
+		stone.floor = mossHub.floor(id);
+		stone.floorSupply = mossHub.floorSupply(id);
+		stone.stepment = mossHub.stepment(id);
+		stone.fsStep = mossHub.fsStepOf(id);
+		stone.accountBalance = mossHub.balanceOf(to, id);
+		stone.totalSupply = mossHub.totalSupply(id);
+		stone.worth = mossHub.worthOf(id);
 	}
 
 	function stoneBuy(uint256 id, uint256 amountToBuy) public view returns (BuyPriceInfo memory buy) {
-		uint256 k = moss.k();
-		uint256 floor = moss.floor(id);
-		uint256 floorSupply = moss.floorSupply(id);
-		uint256 totalSupply = moss.totalSupply(id);
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = moss.estimateBuy(k, totalSupply, floorSupply, floor, amountToBuy);
+		uint256 k = mossHub.k();
+		uint256 floor = mossHub.floor(id);
+		uint256 floorSupply = mossHub.floorSupply(id);
+		uint256 totalSupply = mossHub.totalSupply(id);
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateBuy(k, totalSupply, floorSupply, floor, amountToBuy);
 		buy = BuyPriceInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
 	}
 
 	function stoneSell(uint256 id, uint256 amountToSell) public view returns (SellPriceInfo memory sale) {
-		uint256 k = moss.k();
-		uint256 floor = moss.floor(id);
-		uint256 floorSupply = moss.floorSupply(id);
-		uint256 totalSupply = moss.totalSupply(id);
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = moss.estimateSell(k, totalSupply, floorSupply, floor, amountToSell);
+		uint256 k = mossHub.k();
+		uint256 floor = mossHub.floor(id);
+		uint256 floorSupply = mossHub.floorSupply(id);
+		uint256 totalSupply = mossHub.totalSupply(id);
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateSell(k, totalSupply, floorSupply, floor, amountToSell);
 		sale = SellPriceInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
 	}
 }

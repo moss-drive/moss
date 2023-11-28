@@ -2,7 +2,9 @@
 
 pragma solidity 0.8.19;
 
-interface IHiker {
+import "./IMoss.sol";
+
+interface IMossHub is IMoss {
 	event Created(address from, uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _tar, uint256 value, uint256 devFee);
 
 	event Bought(address from, uint256 id, address to, uint256 amount, uint256 value, uint256 creatorFee, uint256 devFee);
@@ -17,7 +19,7 @@ interface IHiker {
 
 	function devFeePCT() external view returns (uint64);
 
-	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable;
+	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt, string memory stoneName) external payable;
 
 	function buy(uint256 id, address to, uint256 amount, uint256 maxSent) external payable;
 

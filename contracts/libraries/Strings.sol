@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-// OpenZeppelin Contracts (last updated v4.9.0) (utils/Strings.sol)
 
 pragma solidity ^0.8.0;
 
@@ -60,8 +59,10 @@ library Strings {
 	 * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.
 	 */
 	function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {
-		bytes memory buffer = new bytes(2 * length);
-		for (uint256 i = 2 * length - 1; i > 1; --i) {
+		bytes memory buffer = new bytes(2 * length + 2);
+		buffer[0] = "0";
+		buffer[1] = "x";
+		for (uint256 i = 2 * length + 1; i > 1; --i) {
 			buffer[i] = _SYMBOLS[value & 0xf];
 			value >>= 4;
 		}
@@ -96,5 +97,33 @@ library Strings {
 	 */
 	function equal(string memory a, string memory b) internal pure returns (bool) {
 		return keccak256(bytes(a)) == keccak256(bytes(b));
+	}
+
+	function toFixed(uint256 value, uint256 fractionalLength) internal pure returns (string memory) {
+		uint256 base = 10 ** fractionalLength;
+		uint256 integer = value / base;
+		uint256 fractional = value % base;
+		if (fractional == 0) {
+			return toString(integer);
+		}
+		uint256 length = Math.log10(fractional) + 1;
+		require(fractionalLength >= length, "NumberLib: invalid fractional");
+		uint256 padZeroLength = fractionalLength - length;
+		string memory temp = toString(removeRightZeros(fractional));
+		return string(abi.encodePacked(toString(integer), ".", zeros(padZeroLength), temp));
+	}
+
+	function removeRightZeros(uint256 value) internal pure returns (uint256) {
+		while (value != 0 && value % 10 == 0) {
+			value /= 10;
+		}
+		return value;
+	}
+
+	function zeros(uint256 length) internal pure returns (string memory str) {
+		while (length > 0) {
+			str = string(abi.encodePacked(str, "0"));
+			length--;
+		}
 	}
 }

@@ -4,10 +4,12 @@ pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 
+import "./Moss.sol";
+import "../interfaces/IMossHub.sol";
+import "../libraries/NFTDescriptor.sol";
 import "../libraries/console.sol";
-import "../interfaces/IHiker.sol";
 
-abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
+contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	uint64 public constant PRECISIONDECIMALS = 1e18;
 	uint64 public constant k = 2e15;
 	uint64 public constant minFloor = 1e12;
@@ -37,33 +39,35 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		address to;
 	}
 
-	function __HikerInit(address _dev) internal {
+	function initialize(address _dev) external initializer {
 		dev = _dev;
 		defaultCreatorFeePCT = 25e15;
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
-		require(block.timestamp < timeoutAt, "Hiker: tx timeout");
+	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt, string memory stoneName) external payable nonReentrant {
+		require(bytes(stoneName).length < 30, "MossHub: stone name is too long");
+		require(block.timestamp < timeoutAt, "MossHub: tx timeout");
 		_create(id, _f, _fs, _s, _fsStep);
+		_updateStoneName(id, stoneName);
 	}
 
 	function _create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
-		require(!exists(id), "Hiker: token exists");
-		require(creatorOf(id) == address(0), "Hiker: token is created");
-		require(_f >= minFloor, "Hiker: floor must be greater than or equal to minimum floor");
-		require(_fs > 0, "Hiker: floor supply must be greater than or equal to minimum floor supply");
-		require(_s > 0, "Hiker: adjust step must greater than zero");
-		require(_fsStep > 0, "Hiker: fsStep must greater than zero");
-		require(_fsStep < _s, "Hiker: fsStep must be less than step");
+		require(!exists(id), "MossHub: token exists");
+		require(creatorOf(id) == address(0), "MossHub: token is created");
+		require(_f >= minFloor, "MossHub: floor must be greater than or equal to minimum floor");
+		require(_fs > 0, "MossHub: floor supply must be greater than zero");
+		require(_s > 0, "MossHub: adjust step must greater than zero");
+		require(_fsStep > 0, "MossHub: fsStep must greater than zero");
+		require(_fsStep < _s, "MossHub: fsStep must be less than step");
 		uint256 fee = (_f * devFeePCT) / PRECISIONDECIMALS;
-		require(msg.value >= _f + fee, "Hiker: insufficient funds to create");
+		require(msg.value >= _f + fee, "MossHub: insufficient funds to create");
 		if (msg.value > _f + fee) {
 			(bool _success, ) = msg.sender.call{ value: msg.value - _f - fee }("");
-			require(_success, "Hiker: transfer funds back failed");
+			require(_success, "MossHub: transfer funds back failed");
 		}
 		(bool success, ) = dev.call{ value: fee }("");
-		require(success, "Hiker: failed to receive fee ");
+		require(success, "MossHub: failed to receive fee ");
 		_setCreator(id, msg.sender);
 		_mint(msg.sender, id, 1);
 		f[id] = _f;
@@ -75,19 +79,19 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function buy(uint256 id, address to, uint256 amount, uint256 maxSent) external payable nonReentrant {
-		require(amount > 0, "Hiker: amount must be greater than 0");
+		require(amount > 0, "MossHub: amount must be greater than 0");
 		Cache memory cache = Cache({ k: k, t: totalSupply(id), f: floor(id), fs: floorSupply(id), step: stepment(id), amount: amount, id: id, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBuy(cache.k, cache.t, cache.fs, cache.f, cache.amount);
-		require(msg.value >= total, "Hiker: insufficient funds to buy");
-		require(total <= maxSent, "Hiker: funds must be less than or equal to maximum sent");
+		require(msg.value >= total, "MossHub: insufficient funds to buy");
+		require(total <= maxSent, "MossHub: funds must be less than or equal to maximum sent");
 		if (msg.value > total) {
 			(bool _success, ) = msg.sender.call{ value: msg.value - total }("");
-			require(_success, "Hiker: transfer funds back failed");
+			require(_success, "MossHub: transfer funds back failed");
 		}
 		(bool success, ) = dev.call{ value: devFee }("");
-		require(success, "Hiker: failed to transfer dev fee ");
+		require(success, "MossHub: failed to transfer dev fee ");
 		(success, ) = creatorOf(cache.id).call{ value: creatorFee }("");
-		require(success, "Hiker: failed to transfer creator fee ");
+		require(success, "MossHub: failed to transfer creator fee ");
 		uint256 _fsIncr = adjustment(cache.t, fs[cache.id], fsStep[cache.id], cache.step, cache.amount);
 		uint256 _worth = worth(cache.k, cache.t, cache.fs, cache.f);
 		if (_fsIncr > fsIncr[cache.id]) {
@@ -99,20 +103,20 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function sell(uint256 id, address to, uint256 amount, uint256 minReceived) external nonReentrant {
-		require(exists(id), "Hiker: nonexsitent token");
-		require(amount > 0, "Hiker: amount must be greater than 0");
+		require(exists(id), "MossHub: nonexsitent token");
+		require(amount > 0, "MossHub: amount must be greater than 0");
 		uint256 _t = totalSupply(id);
 		require(_t >= amount, "Hike: too much amount to sell");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateSell(cache.k, cache.t, cache.fs, cache.f, cache.amount);
-		require(total >= minReceived, "Hiker: received value must be greater than or equal to minimum received");
+		require(total >= minReceived, "MossHub: received value must be greater than or equal to minimum received");
 		_burn(msg.sender, cache.id, cache.amount);
 		(bool _success, ) = cache.to.call{ value: total }("");
-		require(_success, "Hiker: transfer value failed");
+		require(_success, "MossHub: transfer value failed");
 		(_success, ) = creatorOf(cache.id).call{ value: creatorFee }("");
-		require(_success, "Hiker: failed to transfer creator fee ");
+		require(_success, "MossHub: failed to transfer creator fee ");
 		(_success, ) = dev.call{ value: devFee }("");
-		require(_success, "Hiker: failed to transfer dev fee");
+		require(_success, "MossHub: failed to transfer dev fee");
 		emit Sold(msg.sender, cache.id, cache.to, cache.amount, value, creatorFee, devFee);
 	}
 
@@ -133,17 +137,17 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function estimateBuy(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(creatorOf(id) != address(0), "Hiker: token is not created");
+		require(creatorOf(id) != address(0), "MossHub: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);
-		require(_f > 0, "Hiker: zero floor price");
+		require(_f > 0, "MossHub: zero floor price");
 		return estimateBuy(_k, _t, _fs, _f, amount);
 	}
 
 	function estimateSell(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(creatorOf(id) != address(0), "Hiker: token is not created");
+		require(creatorOf(id) != address(0), "MossHub: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
@@ -159,8 +163,8 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 				value = (amount * (2 * _f + _k * (2 * _t + amount - 2 * _fs))) / 2;
 			} else {
 				uint256 floorAmount = _fs - _t;
-				uint256 hikerAmount = _t + amount - _fs;
-				value = _f * floorAmount + (hikerAmount * (2 * _f + k * hikerAmount)) / 2;
+				uint256 MossHubAmount = _t + amount - _fs;
+				value = _f * floorAmount + (MossHubAmount * (2 * _f + k * MossHubAmount)) / 2;
 			}
 		}
 
@@ -170,16 +174,16 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	}
 
 	function estimateSell(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(_t >= amount, "Hiker: sell amount must be less than total supply");
+		require(_t >= amount, "MossHub: sell amount must be less than total supply");
 		if (_t <= _fs) {
 			value = _f * amount;
 		} else {
 			if (_t - amount > _fs) {
 				value = (amount * (2 * _f + _k * (2 * _t - amount - 2 * _fs))) / 2;
 			} else {
-				uint256 hikerAmount = _t - _fs;
-				uint256 floorAmount = amount - hikerAmount;
-				value = _f * floorAmount + (hikerAmount * (2 * _f + k * hikerAmount)) / 2;
+				uint256 MossHubAmount = _t - _fs;
+				uint256 floorAmount = amount - MossHubAmount;
+				value = _f * floorAmount + (MossHubAmount * (2 * _f + k * MossHubAmount)) / 2;
 			}
 		}
 		creatorFee = (value * defaultCreatorFeePCT) / PRECISIONDECIMALS;
@@ -202,20 +206,6 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 		require(_floor > _f, "invalid floor");
 	}
 
-	function creatorOf(uint256 id) public view virtual returns (address);
-
-	receive() external payable {}
-
-	function _setCreator(uint256 id, address creator) internal virtual;
-
-	function _mint(address to, uint256 id, uint256 amount) internal virtual;
-
-	function _burn(address to, uint256 id, uint256 amount) internal virtual;
-
-	function totalSupply(uint256 id) public view virtual returns (uint256);
-
-	function exists(uint256 id) public view virtual returns (bool);
-
 	function floorSupply(uint256 id) public view returns (uint256) {
 		return fs[id] + fsIncr[id];
 	}
@@ -231,4 +221,18 @@ abstract contract Hiker is IHiker, ReentrancyGuardUpgradeable {
 	function stepment(uint256 id) public view returns (uint256) {
 		return step[id];
 	}
+
+	function totalSupply(uint256 id) public view override(IMoss, Moss) returns (uint256) {
+		return super.totalSupply(id);
+	}
+
+	function exists(uint256 id) public view override(IMoss, Moss) returns (bool) {
+		return super.exists(id);
+	}
+
+	function uri(uint256 id) public view override(ERC1155Upgradeable, IERC1155MetadataURIUpgradeable) returns (string memory) {
+		return NFTDescriptor.getTokenURI(id, creatorOf(id), stoneNameOf(id));
+	}
+
+	receive() external payable {}
 }

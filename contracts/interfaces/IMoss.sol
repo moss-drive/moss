@@ -2,18 +2,18 @@
 
 pragma solidity 0.8.19;
 
-import "./IHiker.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol";
 
-interface IMoss is IHiker {
+interface IMoss is IERC1155MetadataURIUpgradeable {
+	event StoneNameUpdated(uint256 id, string name);
+
 	event CreatorUpdated(uint256 id, address creator);
-
-	function uri(uint256 id) external view returns (string memory);
 
 	function creatorOf(uint256 id) external view returns (address);
 
-	function totalSupply(uint256 id) external view returns (uint256);
+	function stoneNameOf(uint256 id) external view returns (string memory);
 
-	function balanceOf(address to, uint256 id) external view returns (uint256);
+	function totalSupply(uint256 id) external view returns (uint256);
 
 	function exists(uint256 id) external view returns (bool);
 }
