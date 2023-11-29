@@ -20,7 +20,7 @@ library NFTDescriptor {
 
 	function getTokenURI(Meta memory meta) external pure returns (string memory) {
 		string memory name = string(abi.encodePacked("@Moss-", Strings.toString(meta.id)));
-		string memory json = string(abi.encodePacked('{"name":"', name, '","description":"', name, '","external_url":"https://www.baidu.com/","image_data":"', getSVGImage(meta), '"}'));
+		string memory json = string(abi.encodePacked('{"name":"', name, '","description":"', name, '","image_data":"', getSVGImage(meta), '"}'));
 		return string.concat("data:application/json;utf8,", json);
 	}
 
