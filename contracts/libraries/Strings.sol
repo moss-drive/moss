@@ -117,7 +117,16 @@ library Strings {
 	}
 
 	function matchFractionalToReserved(uint256 value, uint256 len) internal pure returns (uint256) {
-		while (Math.log10(value) + 1 > len) {
+		value = trimZeros(value);
+		while (value != 0 && Math.log10(value) + 1 > len) {
+			value /= 10;
+			value = trimZeros(value);
+		}
+		return value;
+	}
+
+	function trimZeros(uint256 value) internal pure returns (uint256) {
+		while (value != 0 && value % 10 == 0) {
 			value /= 10;
 		}
 		return value;

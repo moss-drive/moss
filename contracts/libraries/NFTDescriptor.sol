@@ -2,11 +2,8 @@
 
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/utils/Base64.sol";
 import "./Strings.sol";
 import "./BytesLib.sol";
-import "./BytesLib.sol";
-
 import "./console.sol";
 
 library NFTDescriptor {
@@ -23,7 +20,7 @@ library NFTDescriptor {
 
 	function getTokenURI(Meta memory meta) external pure returns (string memory) {
 		string memory name = string(abi.encodePacked("@Moss-", Strings.toString(meta.id)));
-		string memory json = string(abi.encodePacked('{"name":"', name, '","description":"', name, '","external_url":"https://www.baidu.com/","image_data":"', getSVGImage(meta), '","attributes":[{"trait_type":"id","value":"#', Strings.toString(meta.id), '"}]}'));
+		string memory json = string(abi.encodePacked('{"name":"', name, '","description":"', name, '","external_url":"https://www.baidu.com/","image_data":"', getSVGImage(meta), '"}'));
 		return string.concat("data:application/json;utf8,", json);
 	}
 
