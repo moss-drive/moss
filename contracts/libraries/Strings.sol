@@ -99,22 +99,25 @@ library Strings {
 		return keccak256(bytes(a)) == keccak256(bytes(b));
 	}
 
-	function toFixed(uint256 value, uint256 fractionalLength) internal pure returns (string memory) {
-		uint256 base = 10 ** fractionalLength;
+	function toFixed(uint256 value, uint256 decimals, uint256 reserved) internal pure returns (string memory) {
+		uint256 base = 10 ** decimals;
 		uint256 integer = value / base;
 		uint256 fractional = value % base;
 		if (fractional == 0) {
 			return toString(integer);
 		}
 		uint256 length = Math.log10(fractional) + 1;
-		require(fractionalLength >= length, "NumberLib: invalid fractional");
-		uint256 padZeroLength = fractionalLength - length;
-		string memory temp = toString(removeRightZeros(fractional));
+		require(decimals >= length, "NumberLib: invalid fractional");
+		uint256 padZeroLength = decimals - length;
+		if (padZeroLength >= reserved) {
+			return toString(integer);
+		}
+		string memory temp = toString(matchFractionalToReserved(fractional, reserved - padZeroLength));
 		return string(abi.encodePacked(toString(integer), ".", zeros(padZeroLength), temp));
 	}
 
-	function removeRightZeros(uint256 value) internal pure returns (uint256) {
-		while (value != 0 && value % 10 == 0) {
+	function matchFractionalToReserved(uint256 value, uint256 len) internal pure returns (uint256) {
+		while (Math.log10(value) + 1 > len) {
 			value /= 10;
 		}
 		return value;

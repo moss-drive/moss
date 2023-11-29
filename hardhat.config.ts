@@ -12,10 +12,12 @@ import 'solidity-docgen'
 import { config as dotenvConfig } from 'dotenv'
 import { resolve } from 'path'
 
+if (process.env.NODE_ENV != 'build') {
+	require('./tasks')
+}
+
 const dotenvConfigPath: string = process.env.DOTENV_CONFIG_PATH || './.env'
 dotenvConfig({ path: resolve(__dirname, dotenvConfigPath) })
-
-import './tasks'
 
 const accounts = {
 	mnemonic: process.env.MNEMONIC || 'test test test test test test test test test test test test',

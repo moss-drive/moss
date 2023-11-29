@@ -9,14 +9,14 @@ import "../interfaces/IMossHub.sol";
 contract Helpers {
 	IMossHub public immutable mossHub;
 
-	struct BuyPriceInfo {
+	struct MintingInfo {
 		uint256 total;
 		uint256 value;
 		uint256 creatorFee;
 		uint256 devFee;
 	}
 
-	struct SellPriceInfo {
+	struct BurningInfo {
 		uint256 total;
 		uint256 value;
 		uint256 creatorFee;
@@ -57,21 +57,21 @@ contract Helpers {
 		stone.worth = mossHub.worthOf(id);
 	}
 
-	function stoneBuy(uint256 id, uint256 amountToBuy) public view returns (BuyPriceInfo memory buy) {
+	function stoneMint(uint256 id, uint256 amountToMint) public view returns (MintingInfo memory info) {
 		uint256 k = mossHub.k();
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateBuy(k, totalSupply, floorSupply, floor, amountToBuy);
-		buy = BuyPriceInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateMint(k, totalSupply, floorSupply, floor, amountToMint);
+		info = MintingInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
 	}
 
-	function stoneSell(uint256 id, uint256 amountToSell) public view returns (SellPriceInfo memory sale) {
+	function stoneBurn(uint256 id, uint256 amountToBurn) public view returns (BurningInfo memory info) {
 		uint256 k = mossHub.k();
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateSell(k, totalSupply, floorSupply, floor, amountToSell);
-		sale = SellPriceInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = mossHub.estimateBurn(k, totalSupply, floorSupply, floor, amountToBurn);
+		info = BurningInfo({ total: total, value: value, creatorFee: creatorFee, devFee: devFee });
 	}
 }

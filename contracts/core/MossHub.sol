@@ -45,11 +45,9 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt, string memory stoneName) external payable nonReentrant {
-		require(bytes(stoneName).length < 30, "MossHub: stone name is too long");
+	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
 		require(block.timestamp < timeoutAt, "MossHub: tx timeout");
 		_create(id, _f, _fs, _s, _fsStep);
-		_updateStoneName(id, stoneName);
 	}
 
 	function _create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
@@ -78,11 +76,11 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		emit Created(msg.sender, id, _f, _fs, _s, _fsStep, _f, fee);
 	}
 
-	function buy(uint256 id, address to, uint256 amount, uint256 maxSent) external payable nonReentrant {
+	function mint(uint256 id, address to, uint256 amount, uint256 maxSent) external payable nonReentrant {
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		Cache memory cache = Cache({ k: k, t: totalSupply(id), f: floor(id), fs: floorSupply(id), step: stepment(id), amount: amount, id: id, to: to });
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBuy(cache.k, cache.t, cache.fs, cache.f, cache.amount);
-		require(msg.value >= total, "MossHub: insufficient funds to buy");
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateMint(cache.k, cache.t, cache.fs, cache.f, cache.amount);
+		require(msg.value >= total, "MossHub: insufficient funds to Mint");
 		require(total <= maxSent, "MossHub: funds must be less than or equal to maximum sent");
 		if (msg.value > total) {
 			(bool _success, ) = msg.sender.call{ value: msg.value - total }("");
@@ -99,16 +97,16 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 			fsIncr[cache.id] = _fsIncr;
 		}
 		_mint(cache.to, cache.id, cache.amount);
-		emit Bought(msg.sender, cache.id, cache.to, cache.amount, total, creatorFee, devFee);
+		emit Minted(msg.sender, cache.id, cache.to, cache.amount, total, creatorFee, devFee);
 	}
 
-	function sell(uint256 id, address to, uint256 amount, uint256 minReceived) external nonReentrant {
+	function burn(uint256 id, address to, uint256 amount, uint256 minReceived) external nonReentrant {
 		require(exists(id), "MossHub: nonexsitent token");
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		uint256 _t = totalSupply(id);
-		require(_t >= amount, "Hike: too much amount to sell");
+		require(_t >= amount, "Hike: too much amount to Burn");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
-		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateSell(cache.k, cache.t, cache.fs, cache.f, cache.amount);
+		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBurn(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(total >= minReceived, "MossHub: received value must be greater than or equal to minimum received");
 		_burn(msg.sender, cache.id, cache.amount);
 		(bool _success, ) = cache.to.call{ value: total }("");
@@ -117,7 +115,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		require(_success, "MossHub: failed to transfer creator fee ");
 		(_success, ) = dev.call{ value: devFee }("");
 		require(_success, "MossHub: failed to transfer dev fee");
-		emit Sold(msg.sender, cache.id, cache.to, cache.amount, value, creatorFee, devFee);
+		emit Burnt(msg.sender, cache.id, cache.to, cache.amount, value, creatorFee, devFee);
 	}
 
 	function worth(uint256 _k, uint256 _t, uint256 _fs, uint256 _f) public pure returns (uint256) {
@@ -136,26 +134,26 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		return worth(k, _t, _fs, _f);
 	}
 
-	function estimateBuy(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+	function estimateMint(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		require(creatorOf(id) != address(0), "MossHub: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);
 		require(_f > 0, "MossHub: zero floor price");
-		return estimateBuy(_k, _t, _fs, _f, amount);
+		return estimateMint(_k, _t, _fs, _f, amount);
 	}
 
-	function estimateSell(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+	function estimateBurn(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		require(creatorOf(id) != address(0), "MossHub: token is not created");
 		uint256 _k = k;
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);
-		return estimateSell(_k, _t, _fs, _f, amount);
+		return estimateBurn(_k, _t, _fs, _f, amount);
 	}
 
-	function estimateBuy(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+	function estimateMint(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		if (_t + amount <= _fs) {
 			value = _f * amount;
 		} else {
@@ -173,8 +171,8 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		total = value + creatorFee + devFee;
 	}
 
-	function estimateSell(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(_t >= amount, "MossHub: sell amount must be less than total supply");
+	function estimateBurn(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+		require(_t >= amount, "MossHub: Burn amount must be less than total supply");
 		if (_t <= _fs) {
 			value = _f * amount;
 		} else {
@@ -231,7 +229,16 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	}
 
 	function uri(uint256 id) public view override(ERC1155Upgradeable, IERC1155MetadataURIUpgradeable) returns (string memory) {
-		return NFTDescriptor.getTokenURI(id, creatorOf(id), stoneNameOf(id));
+		NFTDescriptor.Meta memory meta;
+		meta.id = id;
+		meta.creator = creatorOf(id);
+		meta.floor = floor(id);
+		meta.floorSupply = floorSupply(id);
+		meta.totalSupply = totalSupply(id);
+		meta.totalWorth = worth(k, meta.totalSupply, meta.floorSupply, meta.floor);
+		(, meta.mintingPrice, , ) = estimateMint(k, meta.totalSupply, meta.floorSupply, meta.floor, 1);
+		(, meta.burningPrice, , ) = estimateBurn(k, meta.totalSupply, meta.floorSupply, meta.floor, 1);
+		return NFTDescriptor.getTokenURI(meta);
 	}
 
 	receive() external payable {}
