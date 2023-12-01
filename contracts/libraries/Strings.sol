@@ -43,7 +43,7 @@ library Strings {
 	 * @dev Converts a `int256` to its ASCII `string` decimal representation.
 	 */
 	function toString(int256 value) internal pure returns (string memory) {
-		return string(abi.encodePacked(value < 0 ? "-" : "", toString(SignedMath.abs(value))));
+		return string.concat(value < 0 ? "-" : "", toString(SignedMath.abs(value)));
 	}
 
 	/**
@@ -113,7 +113,7 @@ library Strings {
 			return toString(integer);
 		}
 		string memory temp = toString(matchFractionalToReserved(fractional, reserved - padZeroLength));
-		return string(abi.encodePacked(toString(integer), ".", zeros(padZeroLength), temp));
+		return string.concat(toString(integer), ".", zeros(padZeroLength), temp);
 	}
 
 	function matchFractionalToReserved(uint256 value, uint256 len) internal pure returns (uint256) {
@@ -134,7 +134,7 @@ library Strings {
 
 	function zeros(uint256 length) internal pure returns (string memory str) {
 		while (length > 0) {
-			str = string(abi.encodePacked(str, "0"));
+			str = string.concat(str, "0");
 			length--;
 		}
 	}
