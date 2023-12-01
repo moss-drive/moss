@@ -161,8 +161,8 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 				value = (amount * (2 * _f + _k * (2 * _t + amount - 2 * _fs))) / 2;
 			} else {
 				uint256 floorAmount = _fs - _t;
-				uint256 MossHubAmount = _t + amount - _fs;
-				value = _f * floorAmount + (MossHubAmount * (2 * _f + k * MossHubAmount)) / 2;
+				uint256 amount0 = _t + amount - _fs;
+				value = _f * floorAmount + (amount0 * (2 * _f + k * amount0)) / 2;
 			}
 		}
 
@@ -172,16 +172,16 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	}
 
 	function estimateBurn(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
-		require(_t >= amount, "MossHub: Burn amount must be less than total supply");
+		require(_t >= amount, "MossHub: burning amount must be less than or equal to total supply");
 		if (_t <= _fs) {
 			value = _f * amount;
 		} else {
 			if (_t - amount > _fs) {
 				value = (amount * (2 * _f + _k * (2 * _t - amount - 2 * _fs))) / 2;
 			} else {
-				uint256 MossHubAmount = _t - _fs;
-				uint256 floorAmount = amount - MossHubAmount;
-				value = _f * floorAmount + (MossHubAmount * (2 * _f + k * MossHubAmount)) / 2;
+				uint256 amount0 = _t - _fs;
+				uint256 floorAmount = amount - amount0;
+				value = _f * floorAmount + (amount0 * (2 * _f + k * amount0)) / 2;
 			}
 		}
 		creatorFee = (value * defaultCreatorFeePCT) / PRECISIONDECIMALS;
