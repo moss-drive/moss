@@ -20,13 +20,13 @@ abstract contract Moss is IMoss, ERC1155SupplyUpgradeable, DelegatedOps {
 	function _mint(address to, uint256 id, uint256 amount) internal {
 		require(amount > 0, "Moss: zero amount");
 		_mint(to, id, amount, new bytes(0));
-		emit URI(uri(id), id);
+		emit URI("", id);
 	}
 
 	function _burn(address to, uint256 id, uint256 amount) internal override(ERC1155Upgradeable) {
 		ERC1155Upgradeable._burn(to, id, amount);
 		if (totalSupply(id) > 0) {
-			emit URI(uri(id), id);
+			emit URI("", id);
 		}
 	}
 

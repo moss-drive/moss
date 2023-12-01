@@ -79,6 +79,16 @@ const config = {
 				interval: 5000
 			}
 		},
+		optimistic: {
+			url: 'https://opt-mainnet.g.alchemy.com/v2/uwFroxk2OBoMpOSrmkuHAOcl1Z_1HQy_',
+			chainId: 10,
+			accounts
+		},
+		PGN: {
+			url: 'https://rpc.publicgoods.network',
+			chainId: 424,
+			accounts
+		},
 		bsc: {
 			url: 'https://rpc.ankr.com/bsc',
 			accounts,

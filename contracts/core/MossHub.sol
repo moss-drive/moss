@@ -80,16 +80,13 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		Cache memory cache = Cache({ k: k, t: totalSupply(id), f: floor(id), fs: floorSupply(id), step: stepment(id), amount: amount, id: id, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateMint(cache.k, cache.t, cache.fs, cache.f, cache.amount);
-		require(msg.value >= total, "MossHub: insufficient funds to Mint");
+		require(msg.value >= total, "MossHub: insufficient funds to mint");
 		require(total <= maxSent, "MossHub: funds must be less than or equal to maximum sent");
 		if (msg.value > total) {
-			(bool _success, ) = msg.sender.call{ value: msg.value - total }("");
-			require(_success, "MossHub: transfer funds back failed");
+			_transferFunds(msg.sender, msg.value - total, "MossHub: transfer funds back failed");
 		}
-		(bool success, ) = dev.call{ value: devFee }("");
-		require(success, "MossHub: failed to transfer dev fee ");
-		(success, ) = creatorOf(cache.id).call{ value: creatorFee }("");
-		require(success, "MossHub: failed to transfer creator fee ");
+		_transferFunds(dev, devFee, "MossHub: failed to transfer dev fee");
+		_transferFunds(creatorOf(cache.id), creatorFee, "MossHub: failed to transfer creator fee");
 		uint256 _fsIncr = adjustment(cache.t, fs[cache.id], fsStep[cache.id], cache.step, cache.amount);
 		uint256 _worth = worth(cache.k, cache.t, cache.fs, cache.f);
 		if (_fsIncr > fsIncr[cache.id]) {
@@ -104,18 +101,21 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		require(exists(id), "MossHub: nonexsitent token");
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		uint256 _t = totalSupply(id);
-		require(_t >= amount, "Hike: too much amount to Burn");
+		require(_t >= amount, "Hike: too much amount to burn");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBurn(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(total >= minReceived, "MossHub: received value must be greater than or equal to minimum received");
 		_burn(msg.sender, cache.id, cache.amount);
-		(bool _success, ) = cache.to.call{ value: total }("");
-		require(_success, "MossHub: transfer value failed");
-		(_success, ) = creatorOf(cache.id).call{ value: creatorFee }("");
-		require(_success, "MossHub: failed to transfer creator fee ");
-		(_success, ) = dev.call{ value: devFee }("");
-		require(_success, "MossHub: failed to transfer dev fee");
+		_transferFunds(to, total, "MossHub: transfer value failed");
+		_transferFunds(dev, devFee, "MossHub: failed to transfer dev fee");
+		_transferFunds(creatorOf(cache.id), creatorFee, "MossHub: failed to transfer creator fee");
+
 		emit Burnt(msg.sender, cache.id, cache.to, cache.amount, value, creatorFee, devFee);
+	}
+
+	function _transferFunds(address to, uint256 value, string memory message) internal {
+		(bool success, ) = to.call{ value: value }("");
+		require(success, message);
 	}
 
 	function worth(uint256 _k, uint256 _t, uint256 _fs, uint256 _f) public pure returns (uint256) {
@@ -231,14 +231,20 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	function uri(uint256 id) public view override(ERC1155Upgradeable, IERC1155MetadataURIUpgradeable) returns (string memory) {
 		NFTDescriptor.Meta memory meta;
 		meta.id = id;
+		meta.k = k;
 		meta.creator = creatorOf(id);
 		meta.floor = floor(id);
 		meta.floorSupply = floorSupply(id);
 		meta.totalSupply = totalSupply(id);
+		meta.targetSupply = targetSupply(id);
 		meta.totalWorth = worth(k, meta.totalSupply, meta.floorSupply, meta.floor);
 		(, meta.mintingPrice, , ) = estimateMint(k, meta.totalSupply, meta.floorSupply, meta.floor, 1);
 		(, meta.burningPrice, , ) = estimateBurn(k, meta.totalSupply, meta.floorSupply, meta.floor, 1);
 		return NFTDescriptor.getTokenURI(meta);
+	}
+
+	function targetSupply(uint256 id) public view returns (uint256) {
+		return fs[id] + (fsIncr[id] / fsStep[id]) * step[id] + step[id];
 	}
 
 	receive() external payable {}
