@@ -17,7 +17,7 @@ node_modules/
 
 .yalc
 yalc.lock
-tasks/
+# tasks/
 types/
 test/
 
