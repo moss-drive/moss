@@ -3,8 +3,7 @@ import 'hardhat-deploy'
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 import {
 	ProxyAdmin__factory,
-	MossHub__factory,
-	Voter__factory
+	MossHub__factory
 } from '../types'
 
 export const ProxyAdmin = async (env: HardhatRuntimeEnvironment) => {
