@@ -55,9 +55,9 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		require(creatorOf(id) == address(0), "MossHub: token is created");
 		require(_f >= minFloor, "MossHub: floor must be greater than or equal to minimum floor");
 		require(_fs > 0, "MossHub: floor supply must be greater than zero");
-		require(_s > 0, "MossHub: adjust step must greater than zero");
+		require(_s > 0, "MossHub: step must greater than zero");
 		require(_fsStep > 0, "MossHub: fsStep must greater than zero");
-		require(_fsStep < _s, "MossHub: fsStep must be less than step");
+		require(_fsStep <= _s / 10, "MossHub: fsStep must be less than step/10");
 		uint256 fee = (_f * devFeePCT) / PRECISIONDECIMALS;
 		require(msg.value >= _f + fee, "MossHub: insufficient funds to create");
 		if (msg.value > _f + fee) {
@@ -198,10 +198,10 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 
 	function estimateAdjust(uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) public pure returns (uint256 _floor) {
 		uint256 _floorSupply = _fs + _fsIncr;
-		require(_t + amount > _floorSupply, "invalid parameter");
+		require(_t + amount > _floorSupply, "MossHub: floor supply is gte total supply");
 		uint256 temp = _t + amount - _floorSupply;
 		_floor = (2 * _w - k * temp * temp) / (2 * (_t + amount));
-		require(_floor > _f, "invalid floor");
+		require(_floor > _f, "MossHub: adjusted floor price is lte original floor price");
 	}
 
 	function floorSupply(uint256 id) public view returns (uint256) {

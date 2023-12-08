@@ -17,8 +17,8 @@ node_modules/
 
 .yalc
 yalc.lock
-tasks/
-types/
+# tasks/
+# types/
 test/
 
 contractsInfo.json
