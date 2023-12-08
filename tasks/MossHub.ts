@@ -53,7 +53,6 @@ task('MossHub:mint')
 			const receipt = await tx.wait()
 			console.log('receipt', receipt)
 			const uri = await mossHub.uri(id)
-
 			console.log('uri', uri)
 			const totalSupply = await mossHub.totalSupply(id)
 			console.log('totalSupply', totalSupply)

@@ -19,7 +19,7 @@ node_modules/
 yalc.lock
 # tasks/
 types/
-test/
+# test/
 
 contractsInfo.json
 deployments/hardhat
