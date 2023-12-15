@@ -30,6 +30,7 @@ contract Helpers {
 		uint64 defaultCreatorFeePCT;
 		address creator;
 		uint256 floor;
+		uint256 nextFloor;
 		uint256 floorSupply;
 		uint256 stepment;
 		uint256 fsStep;
@@ -49,6 +50,7 @@ contract Helpers {
 		stone.defaultCreatorFeePCT = mossHub.defaultCreatorFeePCT();
 		stone.creator = mossHub.creatorOf(id);
 		stone.floor = mossHub.floor(id);
+		stone.nextFloor = mossHub.nextFloor(id);
 		stone.floorSupply = mossHub.floorSupply(id);
 		stone.stepment = mossHub.stepment(id);
 		stone.fsStep = mossHub.fsStepOf(id);

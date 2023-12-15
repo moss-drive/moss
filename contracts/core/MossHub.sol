@@ -20,7 +20,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 
 	mapping(uint256 => uint256) internal f;
 
-	mapping(uint256 => uint256) public fs;
+	mapping(uint256 => uint256) public ifs;
 
 	mapping(uint256 => uint256) public fsIncr;
 
@@ -69,28 +69,27 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		_setCreator(id, msg.sender);
 		_mint(msg.sender, id, 1);
 		f[id] = _f;
-		fs[id] = _fs;
+		ifs[id] = _fs;
 		step[id] = _s;
 		fsStep[id] = _fsStep;
 
 		emit Created(msg.sender, id, _f, _fs, _s, _fsStep, _f, fee);
 	}
 
-	function mint(uint256 id, address to, uint256 amount, uint256 maxSent) external payable nonReentrant {
+	function mint(uint256 id, address to, uint256 amount) external payable nonReentrant {
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		Cache memory cache = Cache({ k: k, t: totalSupply(id), f: floor(id), fs: floorSupply(id), step: stepment(id), amount: amount, id: id, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateMint(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(msg.value >= total, "MossHub: insufficient funds to mint");
-		require(total <= maxSent, "MossHub: funds must be less than or equal to maximum sent");
 		if (msg.value > total) {
 			_transferFunds(msg.sender, msg.value - total, "MossHub: transfer funds back failed");
 		}
 		_transferFunds(dev, devFee, "MossHub: failed to transfer dev fee");
 		_transferFunds(creatorOf(cache.id), creatorFee, "MossHub: failed to transfer creator fee");
-		uint256 _fsIncr = adjustment(cache.t, fs[cache.id], fsStep[cache.id], cache.step, cache.amount);
+		uint256 _fsIncr = adjustment(cache.t, ifs[cache.id], fsStep[cache.id], cache.step, cache.amount);
 		uint256 _worth = worth(cache.k, cache.t, cache.fs, cache.f);
 		if (_fsIncr > fsIncr[cache.id]) {
-			f[cache.id] = estimateAdjust(cache.t, fs[cache.id], _fsIncr, cache.f, _worth + value, cache.amount);
+			f[cache.id] = estimateAdjust(cache.t, ifs[cache.id], _fsIncr, cache.f, _worth + value, cache.amount);
 			fsIncr[cache.id] = _fsIncr;
 		}
 		_mint(cache.to, cache.id, cache.amount);
@@ -205,7 +204,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	}
 
 	function floorSupply(uint256 id) public view returns (uint256) {
-		return fs[id] + fsIncr[id];
+		return ifs[id] + fsIncr[id];
 	}
 
 	function floor(uint256 id) public view returns (uint256) {
@@ -244,7 +243,17 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	}
 
 	function targetSupply(uint256 id) public view returns (uint256) {
-		return fs[id] + (fsIncr[id] / fsStep[id]) * step[id] + step[id];
+		return ifs[id] + (fsIncr[id] / fsStep[id]) * step[id] + step[id];
+	}
+
+	function nextFloor(uint256 id) public view returns (uint256) {
+		uint256 _k = k;
+		uint256 _t = targetSupply(id);
+		uint256 _fs = floorSupply(id);
+		uint256 _f = floor(id);
+		uint256 _w = worth(_k, _t, _fs, _f);
+		uint256 _fsIncr = adjustment(_t, ifs[id], fsStepOf(id), stepment(id), 0);
+		return estimateAdjust(_t, ifs[id], _fsIncr, _f, _w, 0);
 	}
 
 	receive() external payable {}

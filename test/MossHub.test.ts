@@ -2,6 +2,7 @@ import '@nomicfoundation/hardhat-ethers'
 import { deploy, Deployment } from './deploy'
 import { ethers } from 'hardhat'
 import { expect } from 'chai'
+import { formatEther } from 'ethers'
 
 describe('Test MossHub', () => {
 
@@ -38,7 +39,9 @@ describe('Test MossHub', () => {
 			const amount = p - 1n
 			const value = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount)
 			console.log('buy value', value.total, value.value, value.devFee, value.creatorFee)
-			await deployment.MossHub.mint(id, deployment.account, amount, value.total, { value: value.total })
+			await deployment.MossHub.mint(id, deployment.account, amount, { value: value.total })
+			const nf = await deployment.MossHub.nextFloor(id)
+			console.log('nf', formatEther(nf))
 		}
 		for (let i = 0; i < 10; i++) {
 			const f = await deployment.MossHub.floor(id)
@@ -48,7 +51,7 @@ describe('Test MossHub', () => {
 			const amount0 = 99
 			const value0 = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount0)
 			console.log('buy value 0', value0.total, value0.value, value0.devFee, value0.creatorFee, ethers.formatEther(value0.total))
-			await deployment.MossHub.mint(id, deployment.account, amount0, value0.total, { value: value0.total })
+			await deployment.MossHub.mint(id, deployment.account, amount0, { value: value0.total })
 			{
 				const f = await deployment.MossHub.floor(id)
 				const p = await deployment.MossHub.floorSupply(id)
@@ -57,7 +60,7 @@ describe('Test MossHub', () => {
 				const amount1 = 1
 				const value1 = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount1)
 				console.log('buy value 1', value1.total, value1.value, value1.devFee, value1.creatorFee, ethers.formatEther(value1.total))
-				await deployment.MossHub.mint(id, deployment.account, amount1, value1.total, { value: value1.total })
+				await deployment.MossHub.mint(id, deployment.account, amount1, { value: value1.total })
 			}
 
 			{
@@ -68,6 +71,8 @@ describe('Test MossHub', () => {
 				const amount2 = 1
 				const value2 = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount2)
 				console.log('buy value 2', value2.total, value2.value, value2.devFee, value2.creatorFee, ethers.formatEther(value2.total))
+				const nf = await deployment.MossHub.nextFloor(id)
+				console.log('nf', formatEther(nf))
 			}
 
 			{
