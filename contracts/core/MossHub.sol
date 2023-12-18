@@ -17,6 +17,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	uint64 public devFeePCT;
 
 	address public dev;
+	uint256 internal currentId;
 
 	mapping(uint256 => uint256) internal f;
 
@@ -45,14 +46,13 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
+	function create(uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
 		require(block.timestamp < timeoutAt, "MossHub: tx timeout");
-		_create(id, _f, _fs, _s, _fsStep);
+		_create(_f, _fs, _s, _fsStep);
 	}
 
-	function _create(uint256 id, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
-		require(!exists(id), "MossHub: token exists");
-		require(creatorOf(id) == address(0), "MossHub: token is created");
+	function _create(uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
+		uint256 id = currentId;
 		require(_f >= minFloor, "MossHub: floor must be greater than or equal to minimum floor");
 		require(_fs > 0, "MossHub: floor supply must be greater than zero");
 		require(_s > 0, "MossHub: step must greater than zero");
@@ -65,14 +65,14 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 			require(_success, "MossHub: transfer funds back failed");
 		}
 		(bool success, ) = dev.call{ value: fee }("");
-		require(success, "MossHub: failed to receive fee ");
+		require(success, "MossHub: failed to receive fee");
 		_setCreator(id, msg.sender);
 		_mint(msg.sender, id, 1);
 		f[id] = _f;
 		ifs[id] = _fs;
 		step[id] = _s;
 		fsStep[id] = _fsStep;
-
+		currentId++;
 		emit Created(msg.sender, id, _f, _fs, _s, _fsStep, _f, fee);
 	}
 

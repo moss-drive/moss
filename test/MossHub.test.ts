@@ -18,7 +18,7 @@ describe('Test MossHub', () => {
 		const f = ethers.parseEther('0.005')
 		{
 			const id = 0
-			await deployment.MossHub.connect(deployment.signers[0]).create(id, f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
+			await deployment.MossHub.connect(deployment.signers[0]).create(f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
 			expect(await deployment.MossHub.exists(id), 'nonexisten token')
 		}
 	})
@@ -26,7 +26,7 @@ describe('Test MossHub', () => {
 	it('mint and burn', async () => {
 		const f = ethers.parseEther('0.005')
 		const id = 0
-		await deployment.MossHub.create(id, f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
+		await deployment.MossHub.create(f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
 		const balance = await deployment.signer.provider?.getBalance(MossHubAddr)
 		console.log('initializeNewKey balance:', balance)
 		const worth = await deployment.MossHub.worthOf(id)
