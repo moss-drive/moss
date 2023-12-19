@@ -25,7 +25,7 @@ async function deploy(): Promise<Deployment> {
 	const data = MossHubImp.interface.encodeFunctionData('initialize', [dev])
 	const proxy = await ethers.deployContract('TransparentUpgradeableProxy', [MossHubImp.target, proxyAdmin.target, data], signer)
 	const MossHub = MossHubImp.attach(proxy.target) as MossHub
-	const helpers = await ethers.deployContract('Helpers', ['0x9d1d65147cF540bC589c5E223D89402B9954CE39'], signer)
+	const helpers = await ethers.deployContract('Helpers', [MossHub.target], signer)
 
 	return {
 		signers,
