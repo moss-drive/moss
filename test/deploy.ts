@@ -1,5 +1,6 @@
 import {
-	MossHub
+	MossHub,
+	Helpers
 } from '../types'
 import { Signer } from 'ethers'
 import { ethers } from 'hardhat'
@@ -9,6 +10,7 @@ interface Deployment {
 	signer: Signer
 	account: string
 	MossHub: MossHub
+	helpers: Helpers
 }
 
 async function deploy(): Promise<Deployment> {
@@ -23,11 +25,14 @@ async function deploy(): Promise<Deployment> {
 	const data = MossHubImp.interface.encodeFunctionData('initialize', [dev])
 	const proxy = await ethers.deployContract('TransparentUpgradeableProxy', [MossHubImp.target, proxyAdmin.target, data], signer)
 	const MossHub = MossHubImp.attach(proxy.target) as MossHub
+	const helpers = await ethers.deployContract('Helpers', ['0x9d1d65147cF540bC589c5E223D89402B9954CE39'], signer)
+
 	return {
 		signers,
 		signer,
 		account,
-		MossHub
+		MossHub,
+		helpers
 	}
 }
 
