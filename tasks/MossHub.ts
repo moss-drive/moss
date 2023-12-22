@@ -60,6 +60,18 @@ import { formatEther } from 'ethers'
 // 			// console.log('image', token.image_data)
 // 		}
 // 	})
+task('MossHub:floor')
+	.addOptionalParam('id')
+	.addOptionalParam('amount')
+	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
+		const mossHub = await MossHub(env)
+		const floor = await mossHub.floor(23)
+		const floorSupply = await mossHub.floorSupply(23)
+		const totalSupply = await mossHub.totalSupply(23)
+		
+		console.log('floor', formatEther(floor))
+		console.log('floorSupply', floorSupply)
+	})
 
 // task('MossHub:mint:price')
 // 	.addOptionalParam('id')
