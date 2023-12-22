@@ -100,7 +100,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		require(exists(id), "MossHub: nonexsitent token");
 		require(amount > 0, "MossHub: amount must be greater than 0");
 		uint256 _t = totalSupply(id);
-		require(_t >= amount, "Hike: too much amount to burn");
+		require(_t >= amount, "MossHub: too much amount to burn");
 		Cache memory cache = Cache({ k: k, t: _t, f: floor(id), fs: floorSupply(id), step: stepment(id), id: id, amount: amount, to: to });
 		(uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) = estimateBurn(cache.k, cache.t, cache.fs, cache.f, cache.amount);
 		require(total >= minReceived, "MossHub: received value must be greater than or equal to minimum received");
