@@ -48,7 +48,7 @@ describe('Test MossHub', () => {
 			const nf = await deployment.MossHub.nextFloor(id)
 			console.log('nf', formatEther(nf))
 		}
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 100; i++) {
 			{
 				const floor = await deployment.MossHub.floor(id)
 				const floorSupply = await deployment.MossHub.floorSupply(id)

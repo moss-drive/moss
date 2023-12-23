@@ -79,6 +79,11 @@ const config = {
 				interval: 5000
 			}
 		},
+		'optimistic-sepolia': {
+			url: 'https://opt-sepolia.g.alchemy.com/v2/W2Mb0zJiEVI8ziTVuoMuyAyKdlpZ0W0T',
+			chainId: 11155420,
+			accounts
+		},
 		optimistic: {
 			url: 'https://opt-mainnet.g.alchemy.com/v2/uwFroxk2OBoMpOSrmkuHAOcl1Z_1HQy_',
 			chainId: 10,
