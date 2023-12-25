@@ -15,7 +15,7 @@ describe('Test MossHub', () => {
 	})
 
 	it('create', async () => {
-		const f = ethers.parseEther('0.005')
+		const f = ethers.parseEther('0.00005')
 		{
 			const id = 0
 			// uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt
@@ -25,30 +25,18 @@ describe('Test MossHub', () => {
 	})
 
 	it('mint and burn', async () => {
-		const f = ethers.parseEther('0.005')
+		const f = ethers.parseEther('0.001')
 		const id = 0
 		// _ f floor price
 		// _fs floor supply
 		// _s supply to adjust price
 		// _fsStep floor supply adjustment when price adjusted
-		await deployment.MossHub.create(f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
+		await deployment.MossHub.create(f, 1, 10, 1, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
 		const balance = await deployment.signer.provider?.getBalance(MossHubAddr)
 		console.log('initializeNewKey balance:', balance)
 		const worth = await deployment.MossHub.worthOf(id)
 		console.log('worth initializeNewKey', worth)
-		{
-			const f = await deployment.MossHub.floor(id)
-			const p = await deployment.MossHub.floorSupply(id)
-			const t = await deployment.MossHub.totalSupply(id)
-			console.log('f', f, 'p', p, 't', t)
-			const amount = p - 1n
-			const value = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount)
-			console.log('buy value', value.total, value.value, value.devFee, value.creatorFee)
-			await deployment.MossHub.mint(id, deployment.account, amount, { value: value.total })
-			const nf = await deployment.MossHub.nextFloor(id)
-			console.log('nf', formatEther(nf))
-		}
-		for (let i = 0; i < 100; i++) {
+		for (let i = 0; i < 1000; i++) {
 			{
 				const floor = await deployment.MossHub.floor(id)
 				const floorSupply = await deployment.MossHub.floorSupply(id)
@@ -75,6 +63,8 @@ describe('Test MossHub', () => {
 				console.log('MossHub worth', ethers.formatEther(worth))
 				const totalSupply = await deployment.MossHub.totalSupply(id)
 				console.log('totalSupply', totalSupply)
+				const floorSupply = await deployment.MossHub.floorSupply(id)
+				console.log('floorSupply', floorSupply)
 			}
 		}
 
