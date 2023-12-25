@@ -2,7 +2,7 @@ import '@nomicfoundation/hardhat-ethers'
 import { deploy, Deployment } from './deploy'
 import { ethers } from 'hardhat'
 import { expect } from 'chai'
-import { formatEther } from 'ethers'
+import { formatEther, parseEther } from 'ethers'
 
 describe('Test MossHub', () => {
 
@@ -15,23 +15,22 @@ describe('Test MossHub', () => {
 	})
 
 	it('create', async () => {
-		const f = ethers.parseEther('0.00005')
 		{
 			const id = 0
 			// uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt
-			await deployment.MossHub.connect(deployment.signers[0]).create(f, 50, 100, 10, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
+			await deployment.MossHub.connect(deployment.signers[0]).create(Math.floor(Date.now() / 1000) + 360, { value: parseEther('0.0002') })
 			expect(await deployment.MossHub.exists(id), 'nonexisten token')
 		}
 	})
 
 	it('mint and burn', async () => {
-		const f = ethers.parseEther('0.001')
+		const f = ethers.parseEther('0.0001')
 		const id = 0
 		// _ f floor price
 		// _fs floor supply
 		// _s supply to adjust price
 		// _fsStep floor supply adjustment when price adjusted
-		await deployment.MossHub.create(f, 1, 10, 1, Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
+		await deployment.MossHub.create(Math.floor(Date.now() / 1000) + 360, { value: f * 2n })
 		const balance = await deployment.signer.provider?.getBalance(MossHubAddr)
 		console.log('initializeNewKey balance:', balance)
 		const worth = await deployment.MossHub.worthOf(id)

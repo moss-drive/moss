@@ -47,18 +47,18 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		devFeePCT = 25e15;
 	}
 
-	function create(uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep, uint256 timeoutAt) external payable nonReentrant {
+	function create(uint256 timeoutAt) external payable nonReentrant {
 		require(block.timestamp < timeoutAt, "MossHub: tx timeout");
-		_create(_f, _fs, _s, _fsStep);
+		_create(1e15, 1e14, 1, 10, 2);
 	}
 
-	function _create(uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
+	function _create(uint64 _k, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
 		uint256 id = currentId;
 		require(_f >= minFloor, "MossHub: floor must be greater than or equal to minimum floor");
 		require(_fs > 0, "MossHub: floor supply must be greater than zero");
 		require(_s > 0, "MossHub: step must greater than zero");
 		require(_fsStep > 0, "MossHub: fsStep must greater than zero");
-		require(_fsStep <= _s / 10, "MossHub: fsStep must be less than step/10");
+		require(_fsStep <= _s / 5, "MossHub: fsStep must be less than step/10");
 		uint256 fee = (_f * devFeePCT) / PRECISIONDECIMALS;
 		require(msg.value >= _f + fee, "MossHub: insufficient funds to create");
 		if (msg.value > _f + fee) {
@@ -67,7 +67,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		_transferFunds(dev, fee, "MossHub: failed to receive fee");
 		_setCreator(id, msg.sender);
 		_mint(msg.sender, id, 1);
-		k[id] = 2e15;
+		k[id] = _k;
 		f[id] = _f;
 		ifs[id] = _fs;
 		step[id] = _s;
