@@ -11,8 +11,6 @@ interface IMossHub is IMoss {
 
 	event Burnt(address from, uint256 id, address to, uint256 amount, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function k() external view returns (uint64);
-
 	function minFloor() external view returns (uint64);
 
 	function defaultCreatorFeePCT() external view returns (uint64);
@@ -35,11 +33,13 @@ interface IMossHub is IMoss {
 
 	function estimateBurn(uint256 id, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function estimateMint(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
+	function estimateMint(uint64 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function estimateBurn(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
+	function estimateBurn(uint64 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) external view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee);
 
-	function estimateAdjust(uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) external pure returns (uint256 _floor);
+	function estimateAdjust(uint64 _k, uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) external pure returns (uint256 _floor);
+
+	function k(uint256 id) external view returns (uint64);
 
 	function floorSupply(uint256 id) external view returns (uint256);
 

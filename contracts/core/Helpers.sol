@@ -44,7 +44,7 @@ contract Helpers {
 	}
 
 	function stoneOf(address to, uint256 id) public view returns (StoneInfo memory stone) {
-		stone.k = mossHub.k();
+		stone.k = mossHub.k(id);
 		stone.minFloor = mossHub.minFloor();
 		stone.devFeePCT = mossHub.devFeePCT();
 		stone.defaultCreatorFeePCT = mossHub.defaultCreatorFeePCT();
@@ -60,7 +60,7 @@ contract Helpers {
 	}
 
 	function stoneMint(uint256 id, uint256 amountToMint) public view returns (MintingInfo memory info) {
-		uint256 k = mossHub.k();
+		uint64 k = mossHub.k(id);
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
@@ -69,7 +69,7 @@ contract Helpers {
 	}
 
 	function stoneBurn(uint256 id, uint256 amountToBurn) public view returns (BurningInfo memory info) {
-		uint256 k = mossHub.k();
+		uint64 k = mossHub.k(id);
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
