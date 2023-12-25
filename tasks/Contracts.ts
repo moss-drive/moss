@@ -22,6 +22,5 @@ export const MossHub = async (env: HardhatRuntimeEnvironment) => {
 export const Helpers = async (env: HardhatRuntimeEnvironment) => {
 	const signers = await env.ethers.getSigners()
 	const deployment = await env.deployments.get('Helpers')
-	console.log('deployment', deployment.address)
 	return Helpers__factory.connect(deployment.address, signers[0])
 }

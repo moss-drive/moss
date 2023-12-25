@@ -6,33 +6,27 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types'
 import {
 	MossHub
 } from './Contracts'
-import { formatEther } from 'ethers'
+import { formatEther, parseEther } from 'ethers'
 
-// task('MossHub:create')
-// 	.addParam('id')
-// 	.addParam('f')
-// 	.addParam('fs')
-// 	.addParam('step')
-// 	.addParam('fsstep')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		const ethers = env.ethers
-// 		const signers = await ethers.getSigners()
-// 		const f = ethers.parseEther(args.f)
-// 		const jsonHead = 'data:application/json;utf8,'
-// 		{
-// 			const id = args.id
-// 			const tx = await mossHub.connect(signers[0]).create(id, f, args.fs, args.step, args.fsstep, Math.floor(Date.now() / 1000) + 360, { value: f * 2n, gasPrice: 2e9 })
-// 			console.log('tx', tx)
-// 			const receipt = await tx.wait()
-// 			console.log('receipt', receipt)
-// 			const uri = await mossHub.uri(id)
+task('MossHub:create')
+	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
+		const mossHub = await MossHub(env)
+		const ethers = env.ethers
+		const signers = await ethers.getSigners()
+		const jsonHead = 'data:application/json;utf8,'
+		{
+			const id = args.id
+			const tx = await mossHub.connect(signers[0]).create(Math.floor(Date.now() / 1000) + 360, { value: parseEther('0.0001') * 2n, gasPrice: 1e9 })
+			console.log('tx', tx)
+			const receipt = await tx.wait()
+			console.log('receipt', receipt)
+			const uri = await mossHub.uri(id)
 
-// 			console.log('uri', uri)
-// 			const token = JSON.parse(uri.substring(jsonHead.length))
-// 			console.log('image', token.image_data)
-// 		}
-// 	})
+			console.log('uri', uri)
+			const token = JSON.parse(uri.substring(jsonHead.length))
+			console.log('image', token.image_data)
+		}
+	})
 
 // task('MossHub:mint')
 // 	.addOptionalParam('id')
@@ -68,7 +62,7 @@ task('MossHub:floor')
 		const floor = await mossHub.floor(23)
 		const floorSupply = await mossHub.floorSupply(23)
 		const totalSupply = await mossHub.totalSupply(23)
-		
+
 		console.log('floor', formatEther(floor))
 		console.log('floorSupply', floorSupply)
 	})
