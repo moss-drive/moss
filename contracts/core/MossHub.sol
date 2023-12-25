@@ -18,7 +18,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	address public dev;
 	uint256 internal currentId;
 
-	mapping(uint256 => uint64) public k;
+	mapping(uint256 => uint256) public k;
 
 	mapping(uint256 => uint256) internal f;
 
@@ -32,7 +32,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 
 	struct Cache {
 		uint256 id;
-		uint64 k;
+		uint256 k;
 		uint256 t;
 		uint256 fs;
 		uint256 f;
@@ -52,7 +52,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		_create(1e15, 1e14, 1, 10, 2);
 	}
 
-	function _create(uint64 _k, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
+	function _create(uint256 _k, uint256 _f, uint256 _fs, uint256 _s, uint256 _fsStep) internal {
 		uint256 id = currentId;
 		require(_f >= minFloor, "MossHub: floor must be greater than or equal to minimum floor");
 		require(_fs > 0, "MossHub: floor supply must be greater than zero");
@@ -135,7 +135,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 
 	function estimateMint(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		require(creatorOf(id) != address(0), "MossHub: token is not created");
-		uint64 _k = k[id];
+		uint256 _k = k[id];
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);
@@ -145,14 +145,14 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 
 	function estimateBurn(uint256 id, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		require(creatorOf(id) != address(0), "MossHub: token is not created");
-		uint64 _k = k[id];
+		uint256 _k = k[id];
 		uint256 _t = totalSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);
 		return estimateBurn(_k, _t, _fs, _f, amount);
 	}
 
-	function estimateMint(uint64 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+	function estimateMint(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		if (_t + amount <= _fs) {
 			value = _f * amount;
 		} else {
@@ -170,7 +170,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		total = value + creatorFee + devFee;
 	}
 
-	function estimateBurn(uint64 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
+	function estimateBurn(uint256 _k, uint256 _t, uint256 _fs, uint256 _f, uint256 amount) public view returns (uint256 total, uint256 value, uint256 creatorFee, uint256 devFee) {
 		require(_t >= amount, "MossHub: burning amount must be less than or equal to total supply");
 		if (_t <= _fs) {
 			value = _f * amount;
@@ -195,7 +195,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		}
 	}
 
-	function estimateAdjust(uint64 _k, uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) public pure returns (uint256 _floor) {
+	function estimateAdjust(uint256 _k, uint256 _t, uint256 _fs, uint256 _fsIncr, uint256 _f, uint256 _w, uint256 amount) public pure returns (uint256 _floor) {
 		uint256 _floorSupply = _fs + _fsIncr;
 		require(_t + amount > _floorSupply, "MossHub: floor supply is gte total supply");
 		uint256 temp = _t + amount - _floorSupply;
@@ -247,7 +247,7 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 	}
 
 	function nextFloor(uint256 id) public view returns (uint256) {
-		uint64 _k = k[id];
+		uint256 _k = k[id];
 		uint256 _t = targetSupply(id);
 		uint256 _fs = floorSupply(id);
 		uint256 _f = floor(id);

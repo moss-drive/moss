@@ -10,7 +10,7 @@ library NFTDescriptor {
 	struct Meta {
 		uint256 id;
 		address creator;
-		uint64 k;
+		uint256 k;
 		uint256 floor;
 		uint256 floorSupply;
 		uint256 totalSupply;

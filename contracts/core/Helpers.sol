@@ -24,7 +24,7 @@ contract Helpers {
 	}
 
 	struct StoneInfo {
-		uint64 k;
+		uint256 k;
 		uint64 minFloor;
 		uint64 devFeePCT;
 		uint64 defaultCreatorFeePCT;
@@ -60,7 +60,7 @@ contract Helpers {
 	}
 
 	function stoneMint(uint256 id, uint256 amountToMint) public view returns (MintingInfo memory info) {
-		uint64 k = mossHub.k(id);
+		uint256 k = mossHub.k(id);
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
@@ -69,7 +69,7 @@ contract Helpers {
 	}
 
 	function stoneBurn(uint256 id, uint256 amountToBurn) public view returns (BurningInfo memory info) {
-		uint64 k = mossHub.k(id);
+		uint256 k = mossHub.k(id);
 		uint256 floor = mossHub.floor(id);
 		uint256 floorSupply = mossHub.floorSupply(id);
 		uint256 totalSupply = mossHub.totalSupply(id);
