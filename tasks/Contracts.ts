@@ -9,7 +9,7 @@ import {
 
 export const ProxyAdmin = async (env: HardhatRuntimeEnvironment) => {
 	const signers = await env.ethers.getSigners()
-	const deployment = await env.deployments.get('ProxyAdmin_Proxy')
+	const deployment = await env.deployments.get('ProxyAdmin')
 	return ProxyAdmin__factory.connect(deployment.address, signers[0])
 }
 

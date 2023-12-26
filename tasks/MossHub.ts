@@ -28,32 +28,6 @@ task('MossHub:create')
 		}
 	})
 
-// task('MossHub:mint')
-// 	.addOptionalParam('id')
-// 	.addOptionalParam('amount')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		const ethers = env.ethers
-// 		const signers = await ethers.getSigners()
-// 		const jsonHead = 'data:application/json;utf8,'
-// 		{
-// 			const amount = args.amount ?? 1
-// 			const account = await signers[0].getAddress()
-// 			const id = args.id ?? 1
-// 			const value0 = await mossHub['estimateMint(uint256,uint256)'](id, amount)
-// 			console.log('total', formatEther(value0.total), 'value', formatEther(value0.value), 'devFee', formatEther(value0.devFee), 'creatorFee', formatEther(value0.creatorFee))
-// 			const tx = await mossHub.connect(signers[0]).mint(id, account, amount, value0.total, { value: value0.total, gasPrice: 2e9 })
-// 			console.log('tx', tx)
-// 			const receipt = await tx.wait()
-// 			console.log('receipt', receipt)
-// 			const uri = await mossHub.uri(id)
-// 			console.log('uri', uri)
-// 			const totalSupply = await mossHub.totalSupply(id)
-// 			console.log('totalSupply', totalSupply)
-// 			// const token = JSON.parse(uri.substring(jsonHead.length))
-// 			// console.log('image', token.image_data)
-// 		}
-// 	})
 task('MossHub:floor')
 	.addOptionalParam('id')
 	.addOptionalParam('amount')
@@ -67,60 +41,15 @@ task('MossHub:floor')
 		console.log('floorSupply', floorSupply)
 	})
 
-// task('MossHub:mint:price')
-// 	.addOptionalParam('id')
-// 	.addOptionalParam('amount')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		{
-// 			const amount = args.amount ?? 1
-// 			const id = args.id ?? 1
-// 			const value0 = await mossHub['estimateMint(uint256,uint256)'](id, amount)
-// 			console.log('total', formatEther(value0.total), 'value', formatEther(value0.value), 'devFee', formatEther(value0.devFee), 'creatorFee', formatEther(value0.creatorFee))
-// 		}
-// 	})
-
-// task('MossHub:burn')
-// 	.addOptionalParam('id')
-// 	.addOptionalParam('amount')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		const ethers = env.ethers
-// 		const signers = await ethers.getSigners()
-// 		const jsonHead = 'data:application/json;utf8,'
-// 		{
-// 			const amount = args.amount ?? 1
-// 			const account = await signers[0].getAddress()
-// 			const id = args.id ?? 1
-// 			const value0 = await mossHub['estimateBurn(uint256,uint256)'](id, amount)
-// 			console.log('total', formatEther(value0.total), 'value', formatEther(value0.value), 'devFee', formatEther(value0.devFee), 'creatorFee', formatEther(value0.creatorFee))
-
-// 			const tx = await mossHub.burn(id, account, amount, value0.total, { gasPrice: 2e9 })
-// 			console.log('tx', tx)
-// 			const receipt = await tx.wait()
-// 			console.log('receipt', receipt)
-// 			const uri = await mossHub.uri(id)
-
-// 			console.log('uri', uri)
-// 			const totalSupply = await mossHub.totalSupply(id)
-// 			console.log('totalSupply', totalSupply)
-// 			// const token = JSON.parse(uri.substring(jsonHead.length))
-// 			// console.log('image', token.image_data)
-// 		}
-// 	})
-
-// task('MossHub:burn:price')
-// 	.addOptionalParam('id')
-// 	.addOptionalParam('amount')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		{
-// 			const amount = args.amount ?? 1
-// 			const id = args.id ?? 1
-// 			const value0 = await mossHub['estimateBurn(uint256,uint256)'](id, amount)
-// 			console.log('total', formatEther(value0.total), 'value', formatEther(value0.value), 'devFee', formatEther(value0.devFee), 'creatorFee', formatEther(value0.creatorFee))
-// 		}
-// 	})
+task('MossHub:transferDev')
+	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
+		const mossHub = await MossHub(env)
+		const newDev = ''
+		const tx = await mossHub.transferDev(newDev)
+		console.log('tx', tx)
+		const receipt = await tx.wait()
+		console.log('receitp', receipt)
+	})
 
 task('MossHub:dev')
 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {

@@ -256,5 +256,10 @@ contract MossHub is IMossHub, Moss, ReentrancyGuardUpgradeable {
 		return estimateAdjust(_k, _t, ifs[id], _fsIncr, _f, _w, 0);
 	}
 
+	function transferDev(address newDev) external {
+		require(msg.sender == dev, "MossHub: caller is not dev");
+		dev = newDev;
+	}
+
 	receive() external payable {}
 }
