@@ -122,16 +122,15 @@ task('MossHub:floor')
 // 		}
 // 	})
 
-// task('MossHub:updateStoneName')
-// 	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
-// 		const mossHub = await MossHub(env)
-// 		const ethers = env.ethers
-// 		const signers = await ethers.getSigners()
-// 		{
-// 			const id = 0
-// 			const tx = await mossHub.connect(signers[0]).updateStoneName(id, 'Alexandas')
-// 			const receipt = await tx.wait()
-// 			console.log('receipt', receipt)
-// 		}
-// 	})
+task('MossHub:dev')
+	.setAction(async (args: any, env: HardhatRuntimeEnvironment) => {
+		const mossHub = await MossHub(env)
+		const ethers = env.ethers
+		const signers = await ethers.getSigners()
+		{
+			const id = 0
+			const dev = await mossHub.dev()
+			console.log('dev', dev)
+		}
+	})
 module.exports = {}

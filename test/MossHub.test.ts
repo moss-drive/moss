@@ -35,37 +35,37 @@ describe('Test MossHub', () => {
 		// console.log('initializeNewKey balance:', balance)
 		// const worth = await deployment.MossHub.worthOf(id)
 		// console.log('worth initializeNewKey', worth)
-		// for (let i = 0; i < 10; i++) {
-		// 	{
-		// 		const floor = await deployment.MossHub.floor(id)
-		// 		const floorSupply = await deployment.MossHub.floorSupply(id)
-		// 		const totalSupply = await deployment.MossHub.totalSupply(id)
-		// 		console.log('floor', ethers.formatEther(floor), 'floorSupply', floorSupply, 'totalSupply', totalSupply)
-		// 		// mint amount
-		// 		const amount1 = 1
-		// 		const value1 = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount1)
-		// 		console.log(
-		// 			'buy value',
-		// 			ethers.formatEther(value1.total),
-		// 			ethers.formatEther(value1.value),
-		// 			ethers.formatEther(value1.devFee),
-		// 			ethers.formatEther(value1.creatorFee),
-		// 			ethers.formatEther(value1.total)
-		// 		)
-		// 		await deployment.MossHub.mint(id, deployment.account, amount1, { value: value1.total })
-		// 	}
+		for (let i = 0; i < 10; i++) {
+			{
+				const floor = await deployment.MossHub.floor(id)
+				const floorSupply = await deployment.MossHub.floorSupply(id)
+				const totalSupply = await deployment.MossHub.totalSupply(id)
+				console.log('floor', ethers.formatEther(floor), 'floorSupply', floorSupply, 'totalSupply', totalSupply)
+				// mint amount
+				const amount1 = 1
+				const value1 = await deployment.MossHub['estimateMint(uint256,uint256)'](id, amount1)
+				console.log(
+					'buy value',
+					ethers.formatEther(value1.total),
+					ethers.formatEther(value1.value),
+					ethers.formatEther(value1.devFee),
+					ethers.formatEther(value1.creatorFee),
+					ethers.formatEther(value1.total)
+				)
+				await deployment.MossHub.mint(id, deployment.account, amount1, { value: value1.total })
+			}
 
-		// 	{
-		// 		const balance = await deployment.signer.provider?.getBalance(MossHubAddr)
-		// 		console.log('balance', ethers.formatEther(balance!))
-		// 		const worth = await deployment.MossHub.worthOf(id)
-		// 		console.log('MossHub worth', ethers.formatEther(worth))
-		// 		const totalSupply = await deployment.MossHub.totalSupply(id)
-		// 		console.log('totalSupply', totalSupply)
-		// 		const floorSupply = await deployment.MossHub.floorSupply(id)
-		// 		console.log('floorSupply', floorSupply)
-		// 	}
-		// }
+			{
+				const balance = await deployment.signer.provider?.getBalance(MossHubAddr)
+				console.log('balance', ethers.formatEther(balance!))
+				const worth = await deployment.MossHub.worthOf(id)
+				console.log('MossHub worth', ethers.formatEther(worth))
+				const totalSupply = await deployment.MossHub.totalSupply(id)
+				console.log('totalSupply', totalSupply)
+				const floorSupply = await deployment.MossHub.floorSupply(id)
+				console.log('floorSupply', floorSupply)
+			}
+		}
 
 		const info = await deployment.helpers.stoneMint(0, 100)
 		console.log('info', info)
