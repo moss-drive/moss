@@ -43,7 +43,6 @@ contract MossSquare is IMossSquare, Moss, ReentrancyGuardUpgradeable {
 	function _create(uint256 _k) internal {
 		uint256 id = currentId;
 		(, uint256 value, , uint256 devFee) = estimateMint(_k, 0, 1);
-		console.log("value", msg.value, value, devFee);
 		require(_k >= minFloor, "MossSquare: k > 0");
 		require(msg.value >= value + devFee, "MossSquare: insufficient funds to create");
 		if (msg.value > value + devFee) {
