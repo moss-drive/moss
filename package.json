@@ -52,9 +52,10 @@
 		"typescript": "^5.1.6"
 	},
 	"scripts": {
-		"prepublish": "tsc ./types/**.ts --moduleResolution nodenext --module nodenext --target ESNext",
+		"publish": "yarn prepublish && npm publish --access public",
+		"prepublish": "yarn build && tsc ./types/**.ts --moduleResolution nodenext --module nodenext --target ESNext",
 		"clean": "hardhat clean",
-		"build": "cross-env NODE_ENV=build hardhat compile && cross-env NODE_ENV=build hardhat typechain && yarn prepublish",
+		"build": "cross-env NODE_ENV=build hardhat compile && cross-env NODE_ENV=build hardhat typechain",
 		"console": "hardhat console",
 		"coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
 		"gas": "cross-env REPORT_GAS=true hardhat test",
