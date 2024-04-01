@@ -8,7 +8,6 @@ import 'hardhat-gas-reporter'
 import 'solidity-coverage'
 import 'hardhat-storage-layout'
 import 'solidity-docgen'
-
 import { config as dotenvConfig } from 'dotenv'
 import { resolve } from 'path'
 
@@ -49,7 +48,7 @@ const config = {
 	},
 	networks: {
 		mainnet: {
-			url: 'https://eth.llamarpc.com',
+			url: 'https://mainnet.infura.io/v3/bc3b8563a584416d9240bec18f404305',
 			accounts,
 			gas: 'auto',
 			gasPrice: 'auto',
@@ -65,10 +64,10 @@ const config = {
 			timeout: 100000
 		},
 		hardhat: {
-			// forking: {
-			// 	enabled: true,
-			// 	url: process.env.MAINNET,
-			// },
+			forking: {
+				enabled: true,
+				url: process.env.MAINNET,
+			},
 			accounts,
 			gas: 'auto',
 			gasPrice: 'auto',
@@ -83,6 +82,16 @@ const config = {
 			url: 'https://opt-sepolia.g.alchemy.com/v2/W2Mb0zJiEVI8ziTVuoMuyAyKdlpZ0W0T',
 			chainId: 11155420,
 			accounts
+		},
+		'blast-sepolia': {
+			url: 'https://sepolia.blast.io',
+			accounts,
+			gasPrice: 1000000000,
+		},
+		'blast-sepolia-dev': {
+			url: 'https://blast-sepolia.blockpi.network/v1/rpc/public',
+			accounts,
+			gasPrice: 2e9,
 		},
 		optimistic: {
 			url: 'https://opt-mainnet.g.alchemy.com/v2/uwFroxk2OBoMpOSrmkuHAOcl1Z_1HQy_',
@@ -136,6 +145,14 @@ const config = {
 			gasPrice: 'auto',
 			gasMultiplier: 1.3,
 			timeout: 100000
+		},
+		zeta: {
+			url: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
+			accounts
+		},
+		blast: {
+			url: 'https://blastl2-mainnet.public.blastapi.io/',
+			accounts
 		}
 	},
 	etherscan: {
