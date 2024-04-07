@@ -5,3 +5,4 @@ hardhat.config.ts
 tasks/
 tests/
 !types/
+.env
