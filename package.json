@@ -1,6 +1,6 @@
 {
 	"name": "moss",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "moss contracts for typescript",
 	"main": "./types/index.js",
 	"types": "./types/index.ts",
@@ -60,8 +60,6 @@
 		"gas": "cross-env REPORT_GAS=true hardhat test",
 		"dev": "hardhat node",
 		"test": "hardhat test",
-		"mumbai": "hardhat --network mumbai",
-		"mumbai:deploy": "hardhat --network mumbai deploy",
 		"dev:deploy": "hardhat --network localhost deploy",
 		"mainnet:deploy": "hardhat --network mainnet deploy",
 		"prepare": "yarn build && hardhat typechain",
