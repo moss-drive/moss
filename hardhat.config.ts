@@ -63,21 +63,21 @@ const config = {
 			gasMultiplier: 1.3,
 			timeout: 100000
 		},
-		hardhat: {
-			forking: {
-				enabled: true,
-				url: process.env.MAINNET,
-			},
-			accounts,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			chainId: 1337,
-			mining: {
-				auto: true,
-				interval: 5000
-			}
-		},
+		// hardhat: {
+		// 	forking: {
+		// 		enabled: true,
+		// 		url: process.env.MAINNET,
+		// 	},
+		// 	accounts,
+		// 	gas: 'auto',
+		// 	gasPrice: 'auto',
+		// 	gasMultiplier: 1.3,
+		// 	chainId: 1337,
+		// 	mining: {
+		// 		auto: true,
+		// 		interval: 5000
+		// 	}
+		// },
 		'optimistic-sepolia': {
 			url: 'https://opt-sepolia.g.alchemy.com/v2/W2Mb0zJiEVI8ziTVuoMuyAyKdlpZ0W0T',
 			chainId: 11155420,
@@ -94,7 +94,7 @@ const config = {
 			gasPrice: 2e9,
 		},
 		optimistic: {
-			url: 'https://opt-mainnet.g.alchemy.com/v2/uwFroxk2OBoMpOSrmkuHAOcl1Z_1HQy_',
+			url: 'https://op-pokt.nodies.app',
 			chainId: 10,
 			accounts
 		},
@@ -151,7 +151,11 @@ const config = {
 			accounts
 		},
 		blast: {
-			url: 'https://blastl2-mainnet.public.blastapi.io/',
+			url: 'https://rpc.blast.io',
+			accounts
+		},
+		'taiko-hekla': {
+			url: 'https://rpc.ankr.com/taiko_hekla',
 			accounts
 		}
 	},
