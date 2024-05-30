@@ -2,7 +2,8 @@ import '@nomicfoundation/hardhat-chai-matchers'
 import '@nomicfoundation/hardhat-ethers'
 import '@nomicfoundation/hardhat-verify'
 import '@typechain/hardhat'
-
+import '@matterlabs/hardhat-zksync-solc'
+import '@matterlabs/hardhat-zksync-deploy'
 import 'hardhat-deploy'
 import 'hardhat-gas-reporter'
 import 'solidity-coverage'
@@ -23,6 +24,22 @@ const accounts = {
 }
 
 const config = {
+	zksolc: {
+		version: '1.4.0', // Uses latest available in https://github.com/matter-labs/zksolc-bin/
+		settings: {
+			libraries: {
+				'contracts/libraries/NFTDescriptor.sol': {
+					'NFTDescriptor': '0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43'
+				}
+			}
+		},
+		missingLibrariesPath: './deployments/optimistic/NFTDescriptor.json',
+		libraries: {
+			'contracts/libraries/NFTDescriptor.sol': {
+				NFTDescriptor: '0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC',
+			},
+		},
+	},
 	solidity: {
 		overrides: {},
 		compilers: [
@@ -63,21 +80,18 @@ const config = {
 			gasMultiplier: 1.3,
 			timeout: 100000
 		},
-		// hardhat: {
-		// 	forking: {
-		// 		enabled: true,
-		// 		url: process.env.MAINNET,
-		// 	},
-		// 	accounts,
-		// 	gas: 'auto',
-		// 	gasPrice: 'auto',
-		// 	gasMultiplier: 1.3,
-		// 	chainId: 1337,
-		// 	mining: {
-		// 		auto: true,
-		// 		interval: 5000
-		// 	}
-		// },
+		zkSyncTestnet: {
+			url: 'https://sepolia.era.zksync.dev', // The testnet RPC URL of zkSync Era network.
+			ethNetwork: 'sepolia', // The Ethereum Web3 RPC URL, or the identifier of the network (e.g. `mainnet` or `sepolia`)
+			zksync: true, // enables zksolc compiler
+			accounts
+		},
+		zkSyncMainnet: {
+			url: 'https://mainnet.era.zksync.io',
+			ethNetwork: 'mainnet',
+			zksync: true,
+			accounts
+		},
 		'optimistic-sepolia': {
 			url: 'https://opt-sepolia.g.alchemy.com/v2/W2Mb0zJiEVI8ziTVuoMuyAyKdlpZ0W0T',
 			chainId: 11155420,
@@ -88,66 +102,9 @@ const config = {
 			accounts,
 			gasPrice: 1000000000,
 		},
-		'blast-sepolia-dev': {
-			url: 'https://blast-sepolia.blockpi.network/v1/rpc/public',
-			accounts,
-			gasPrice: 2e9,
-		},
 		optimistic: {
 			url: 'https://op-pokt.nodies.app',
 			chainId: 10,
-			accounts
-		},
-		PGN: {
-			url: 'https://rpc.publicgoods.network',
-			chainId: 424,
-			accounts
-		},
-		bsc: {
-			url: 'https://rpc.ankr.com/bsc',
-			accounts,
-			chainId: 56,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			timeout: 100000
-		},
-		chapel: {
-			url: 'https://bsctestapi.terminet.io/rpc',
-			accounts,
-			chainId: 97,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			timeout: 100000
-		},
-		goerli: {
-			url: 'https://rpc.goerli.eth.gateway.fm',
-			accounts,
-			chainId: 5,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			timeout: 100000
-		},
-		polygon: {
-			url: 'https://rpc-mainnet.matic.network',
-			accounts,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			timeout: 100000
-		},
-		mumbai: {
-			url: 'https://rpc.ankr.com/polygon_mumbai',
-			accounts,
-			gas: 'auto',
-			gasPrice: 'auto',
-			gasMultiplier: 1.3,
-			timeout: 100000
-		},
-		zeta: {
-			url: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
 			accounts
 		},
 		blast: {
@@ -157,18 +114,44 @@ const config = {
 		'taiko-hekla': {
 			url: 'https://rpc.ankr.com/taiko_hekla',
 			accounts
-		}
+		},
+		'taiko': {
+			url: 'https://rpc.taiko.xyz',
+			accounts
+		},
+		'optopia-sepolia': {
+			url: 'https://rpc-testnet.optopia.ai/',
+			accounts
+		},
+		'optopia': {
+			url: 'https://rpc-mainnet-2.optopia.ai',
+			accounts,
+			zksync: false,
+		},
 	},
 	etherscan: {
 		apiKey: {
-			mainnet: process.env.APIKEY_MAINNET!,
-			bsc: process.env.APIKEY_BSC!,
-			polygon: process.env.APIKEY_POLYGON!,
-			goerli: process.env.APIKEY_GOERLI!,
-			bscTestnet: process.env.APIKEY_CHAPEL!,
-			polygonMumbai: process.env.APIKEY_MUMBAI!,
-			optimisticEthereum: process.env.APIKEY_OP!
-		}
+			'optopia-sepolia': 'YCD2MN31FUJ15DQD4ANRH5FVQV2V66VQ3K',
+			'optopia': 'YCD2MN31FUJ15DQD4ANRH5FVQV2V66VQ3K'
+		},
+		customChains: [
+			{
+				network: 'optopia-sepolia',
+				chainId: 62049,
+				urls: {
+					apiURL: 'https://scan-testnet.optopia.ai/api',
+					browserURL: 'https://scan-testnet.optopia.ai/'
+				}
+			},
+			{
+				network: 'optopia',
+				chainId: 62050,
+				urls: {
+					apiURL: 'https://scan.optopia.ai/api',
+					browserURL: 'https://scan.optopia.ai/'
+				}
+			}
+		]
 	},
 	paths: {
 		deploy: 'deploy',

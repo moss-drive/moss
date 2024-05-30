@@ -6,3 +6,4 @@ tasks/
 tests/
 !types/
 .env
+utils/

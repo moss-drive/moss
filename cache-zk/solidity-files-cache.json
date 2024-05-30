@@ -1,0 +1,2694 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/libraries/NFTDescriptor.sol": {
+      "lastModificationDate": 1709790813109,
+      "contentHash": "3009931ad96b5d137117b7285d42b7eb",
+      "sourceName": "contracts/libraries/NFTDescriptor.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Strings.sol",
+        "./BytesLib.sol",
+        "./console.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "NFTDescriptor"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/libraries/Strings.sol": {
+      "lastModificationDate": 1709790822016,
+      "contentHash": "8d29ecc0231fb43eb73678534803fc6e",
+      "sourceName": "contracts/libraries/Strings.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/math/Math.sol",
+        "@openzeppelin/contracts/utils/math/SignedMath.sol",
+        "./BytesLib.sol",
+        "./console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Strings"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/libraries/console.sol": {
+      "lastModificationDate": 1709790816604,
+      "contentHash": "edef3c98642a0d03dd46c811c3f0ff1f",
+      "sourceName": "contracts/libraries/console.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/libraries/BytesLib.sol": {
+      "lastModificationDate": 1709790806145,
+      "contentHash": "45889911f5071b5ba88017a9e2dcba38",
+      "sourceName": "contracts/libraries/BytesLib.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "BytesLib"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
+      "lastModificationDate": 1703233799795,
+      "contentHash": "fe63409d8a06818b926cf89e0ea88b1b",
+      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Math"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
+      "lastModificationDate": 1703233799823,
+      "contentHash": "9488ebd4daacfee8ad04811600d7d061",
+      "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SignedMath"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/blast/BlastMossHub.sol": {
+      "lastModificationDate": 1716174542783,
+      "contentHash": "2cf094d21f79704eaf1db5f94f4b4368",
+      "sourceName": "contracts/blast/BlastMossHub.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../core/MossHub.sol",
+        "./IBlastPoints.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "BlastMossHub"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/core/MossHub.sol": {
+      "lastModificationDate": 1709790795530,
+      "contentHash": "6a14153eed431ebec501ad209f806df3",
+      "sourceName": "contracts/core/MossHub.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+        "./Moss.sol",
+        "../interfaces/IMossHub.sol",
+        "../libraries/NFTDescriptor.sol",
+        "../libraries/console.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "MossHub"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/blast/IBlastPoints.sol": {
+      "lastModificationDate": 1712893844759,
+      "contentHash": "92181d8b728d5bb663f88c92df0d0ac6",
+      "sourceName": "contracts/blast/IBlastPoints.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "IBlastPoints"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/interfaces/IMossHub.sol": {
+      "lastModificationDate": 1709790809371,
+      "contentHash": "63ed172fccf2cc2a53123ac58c7104bc",
+      "sourceName": "contracts/interfaces/IMossHub.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IMoss.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "IMossHub"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/core/Moss.sol": {
+      "lastModificationDate": 1709790791329,
+      "contentHash": "4416cb847884028c769b8befffd74999",
+      "sourceName": "contracts/core/Moss.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol",
+        "../dependencies/DelegatedOps.sol",
+        "../interfaces/IMoss.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "Moss"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+      "lastModificationDate": 1703233799809,
+      "contentHash": "efeffcf5034292d7ea635de588c95995",
+      "sourceName": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ReentrancyGuardUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/interfaces/IMoss.sol": {
+      "lastModificationDate": 1709790802548,
+      "contentHash": "6ea801eda1b4efecd17a2fcb3033d51c",
+      "sourceName": "contracts/interfaces/IMoss.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "IMoss"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol": {
+      "lastModificationDate": 1703233799691,
+      "contentHash": "8b7e95c747e2dab3b5444b37410a8315",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC1155Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1155MetadataURIUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol": {
+      "lastModificationDate": 1703233799695,
+      "contentHash": "5712a8d74dc6ae8d66b65cdfac95846b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1155Upgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol": {
+      "lastModificationDate": 1703233799701,
+      "contentHash": "d6ecf203a5e72c845be9bbf2f304a289",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC165Upgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/dependencies/DelegatedOps.sol": {
+      "lastModificationDate": 1709790798964,
+      "contentHash": "66b4635ef89fa187ee6990e876e3a238",
+      "sourceName": "contracts/dependencies/DelegatedOps.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "DelegatedOps"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol": {
+      "lastModificationDate": 1703233799536,
+      "contentHash": "fbf5fdb7a74554410a3b4059f3d314df",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC1155Upgradeable.sol",
+        "../../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC1155SupplyUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+      "lastModificationDate": 1703233799774,
+      "contentHash": "b0970a564d121abf9adfff8d1a01eb16",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/AddressUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol": {
+      "lastModificationDate": 1703233799537,
+      "contentHash": "5187bf78bbb054d9d4f5121232d5398b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC1155Upgradeable.sol",
+        "./IERC1155ReceiverUpgradeable.sol",
+        "./extensions/IERC1155MetadataURIUpgradeable.sol",
+        "../../utils/AddressUpgradeable.sol",
+        "../../utils/ContextUpgradeable.sol",
+        "../../utils/introspection/ERC165Upgradeable.sol",
+        "../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC1155Upgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+      "lastModificationDate": 1703233799455,
+      "contentHash": "c30c805386fda8a42ff515da963d3a95",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "AddressUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+      "lastModificationDate": 1703233799475,
+      "contentHash": "6200b84950eb05b4a92a39fd1d6e0f9b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ContextUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol": {
+      "lastModificationDate": 1703233799547,
+      "contentHash": "5f2d8b81c0ff5bd2047b4846c20b998d",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC165Upgradeable.sol",
+        "../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC165Upgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable.sol": {
+      "lastModificationDate": 1703233799693,
+      "contentHash": "eb51ed084f6f7fd2c7098715c5690285",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1155ReceiverUpgradeable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/core/Helpers.sol": {
+      "lastModificationDate": 1709790787795,
+      "contentHash": "78b7a3484e9877ed8b16eba51da204f6",
+      "sourceName": "contracts/core/Helpers.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "../libraries/console.sol",
+        "../interfaces/IMossHub.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "Helpers"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/proxy/AdminWrapper.sol": {
+      "lastModificationDate": 1709790824626,
+      "contentHash": "430e65427bbf93676ac46e1587672982",
+      "sourceName": "contracts/proxy/AdminWrapper.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/StorageSlot.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": [
+        "AdminWrapper"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
+      "lastModificationDate": 1703233799825,
+      "contentHash": "682f7dd1f2e1147c8390e7575deceb2d",
+      "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "StorageSlot"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol": {
+      "lastModificationDate": 1703233799557,
+      "contentHash": "a127706394bead18392601a20d44867a",
+      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../beacon/IBeacon.sol",
+        "../../interfaces/IERC1967.sol",
+        "../../interfaces/draft-IERC1822.sol",
+        "../../utils/Address.sol",
+        "../../utils/StorageSlot.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "ERC1967Upgrade"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+      "lastModificationDate": 1703233799678,
+      "contentHash": "b6bd23bf19e90b771337037706470933",
+      "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IBeacon"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/interfaces/IERC1967.sol": {
+      "lastModificationDate": 1703233799702,
+      "contentHash": "d0d060231a45da7a1eecbb5cd286fa40",
+      "sourceName": "@openzeppelin/contracts/interfaces/IERC1967.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1967"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1703233799468,
+      "contentHash": "211ffd288c1588ba8c10eae668ca3c66",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
+      "lastModificationDate": 1703233799517,
+      "contentHash": "2858d98e74e67987ec81b39605230b74",
+      "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1822Proxiable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
+      "lastModificationDate": 1703233799555,
+      "contentHash": "3fc3c7c0a2956f36e766691bb9473b06",
+      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../Proxy.sol",
+        "./ERC1967Upgrade.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC1967Proxy"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
+      "lastModificationDate": 1703233799806,
+      "contentHash": "40b3d81a836d50ff47e03893dcaaf204",
+      "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Proxy"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
+      "lastModificationDate": 1703233799832,
+      "contentHash": "1286aa8d056c7120d1a2da252e310d2f",
+      "sourceName": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC1967/ERC1967Proxy.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ITransparentUpgradeableProxy",
+        "TransparentUpgradeableProxy"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol": {
+      "lastModificationDate": 1703233799808,
+      "contentHash": "9891986e27d357222a8ac8c0c13abe31",
+      "sourceName": "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "./TransparentUpgradeableProxy.sol",
+        "../../access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ProxyAdmin"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1703233799802,
+      "contentHash": "5a20b2cad87ddb61c7a3a6af21289e28",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1703233799489,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/Users/dinglei/Documents/Hardhat/contracts/moss/contracts/proxy/ContractProxy.sol": {
+      "lastModificationDate": 1709790827140,
+      "contentHash": "a5b6724073fc9adfa71d61bef3ae6759",
+      "sourceName": "contracts/proxy/ContractProxy.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "storageLayout",
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+            }
+          }
+        },
+        "zksolc": {
+          "version": "1.4.0",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/Users/dinglei/Library/Caches/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.4.0",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {
+              "contracts/libraries/NFTDescriptor.sol": {
+                "NFTDescriptor": "0x0A152Ee57E655f4b863766f31a4CB4c903Be9E43"
+              }
+            }
+          },
+          "missingLibrariesPath": "./deployments/optimistic/NFTDescriptor.json",
+          "libraries": {
+            "contracts/libraries/NFTDescriptor.sol": {
+              "NFTDescriptor": "0xF9702469Dfb84A9aC171E284F71615bd3D3f1EdC"
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol",
+        "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.8.19"
+      ],
+      "artifacts": []
+    }
+  }
+}

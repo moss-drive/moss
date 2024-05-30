@@ -16,6 +16,8 @@
 		"solidity"
 	],
 	"devDependencies": {
+		"@matterlabs/hardhat-zksync-deploy": "^1.4.0",
+		"@matterlabs/hardhat-zksync-solc": "^1.1.4",
 		"@nomicfoundation/hardhat-chai-matchers": "^2.0.1",
 		"@nomicfoundation/hardhat-ethers": "^3.0.2",
 		"@nomicfoundation/hardhat-network-helpers": "^1.0.0",
@@ -52,6 +54,11 @@
 		"typescript": "^5.1.6"
 	},
 	"scripts": {
+		"zkSyncMainnet": "hardhat --network zkSyncMainnet",
+		"blast": "hardhat --network blast",
+		"optimistic": "hardhat --network optimistic",
+		"taiko": "hardhat --network taiko",
+		"optopia": "hardhat --network optopia",
 		"prepublish": "tsc ./types/**.ts --moduleResolution nodenext --module nodenext --target ESNext",
 		"clean": "hardhat clean",
 		"build": "cross-env NODE_ENV=build hardhat compile && cross-env NODE_ENV=build hardhat typechain && yarn prepublish",
