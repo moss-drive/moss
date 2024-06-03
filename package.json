@@ -59,6 +59,7 @@
 		"optimistic": "hardhat --network optimistic",
 		"taiko": "hardhat --network taiko",
 		"optopia": "hardhat --network optopia",
+		"opBNB": "hardhat --network opBNB",
 		"prepublish": "tsc ./types/**.ts --moduleResolution nodenext --module nodenext --target ESNext",
 		"clean": "hardhat clean",
 		"build": "cross-env NODE_ENV=build hardhat compile && cross-env NODE_ENV=build hardhat typechain && yarn prepublish",

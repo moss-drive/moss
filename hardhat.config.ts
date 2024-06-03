@@ -11,6 +11,7 @@ import 'hardhat-storage-layout'
 import 'solidity-docgen'
 import { config as dotenvConfig } from 'dotenv'
 import { resolve } from 'path'
+import { url } from 'inspector'
 
 if (process.env.NODE_ENV != 'build') {
 	require('./tasks')
@@ -128,6 +129,11 @@ const config = {
 			accounts,
 			zksync: false,
 		},
+		'opBNB': {
+			url: 'https://1rpc.io/opbnb',
+			accounts,
+			zksync: false,
+		}
 	},
 	etherscan: {
 		apiKey: {
